@@ -3,6 +3,12 @@ from django.http import HttpResponseRedirect
 from django.contrib.sites.models import Site
 
 class SuperuserSSLRedirect:
+    """
+    Forces all superuser logins to go to the server via HTTPS.
+    
+    (See server_config/nginx.conf for an example server setup for nginx+apache_modwsgi.)
+    """
+    
     def process_request(self, request):
         # Note this middleware allows the client to leak cookie data via HTTP, but at least it does not
         # allow the server to leak data back.
