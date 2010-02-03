@@ -1,0 +1,12 @@
+{% extends 'blog/_base.html' %}
+{% load site_bits %}
+
+{% block title %}{{ title }} - {{ block.super}}{% endblock %}
+{% block h1 %}{{ block.super }}: {{ title }}{% endblock %}
+
+{% block content %}
+{% for post in object_list %}
+{% include 'blog/_post_display.html' %}
+{% endfor %}
+{% nav_footer %}
+{% endblock %}

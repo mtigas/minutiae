@@ -1,0 +1,14 @@
+{% load typogrify %}
+<div class="post" id="post-{{ post.id }}">
+    <h2><a href="{{ post.get_absolute_url }}">{{ post.title|typogrify }}</a>{% if not post.is_live %}*{% endif %}</h2>
+    {# {% ifnotequal post.post_type.pk 1 %}<p class="subtitle">A <a href="">{{ post.post_type}}</a></p>{% endifnotequal %} #}
+
+    <div class="content">{{ post.body|safe }}</div>
+    <div class="meta">
+        {% include 'blog/bits/post_metadate.html' %} &bull; 
+        <a href="{{ post.get_absolute_url }}">permalink</a> &bull; 
+        {% with post.absolute_uri as absolute_uri %}
+        {% include 'blog/bits/post_share.html' %}
+        {% endwith %}
+    </div>
+</div>

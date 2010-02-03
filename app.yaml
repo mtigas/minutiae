@@ -1,0 +1,77 @@
+application: mtigas1
+version: 20100123
+runtime: python
+api_version: 1
+
+default_expiration: '3d'
+
+handlers:
+- url: /style/(.*\.ttf)
+  upload: static/style/(.*\.ttf)
+  static_files: static/style/\1
+  secure: optional
+  mime_type: font/ttf
+
+- url: /style/(.*\.eot)
+  upload: static/style/(.*\.eot)
+  static_files: static/style/\1
+  secure: optional
+  mime_type: application/vnd.ms-fontobject
+
+- url: /files
+  static_dir: static
+  secure: optional
+
+- url: /style
+  static_dir: static/style
+  secure: optional
+
+- url: /admin_media
+  static_dir: third_party/django/contrib/admin/media
+  secure: optional
+
+- url: /crossdomain.xml
+  static_files: static/crossdomain.xml
+  upload: static/crossdomain.xml
+  secure: optional
+
+- url: /robots.txt
+  static_files: static/robots_mediaserver.txt
+  upload: static/robots_mediaserver.txt
+  secure: optional
+
+- url: /favicon.ico
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
+  secure: optional
+
+- url: /favicon.png
+  static_files: static/favicon.png
+  upload: static/favicon.png
+  secure: optional
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*\.tmp
+- ^(.*/)?.*\.bak
+- ^(.*/)?.*\.pid
+- ^(.*/)?\.pid
+- ^(.*/)?.*\.pxm
+- ^(.*/)?\.DS_Store
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?\.fseventsd.*
+- ^(.*/)?\.Trashes.*
+- ^(.*/)?docs.*
+- ^(.*/)?comps.*
+- ^(.*/)?server.*
+- ^(.*/)?templates.*
+#- ^(.*/)?third_party.*
+- ^(.*/)?third_party/.*\.py
+- ^(.*/)?init_path\.sh

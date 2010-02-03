@@ -1,0 +1,82 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}Contact - {{ block.super}}{% endblock %}
+
+{% block headextra %}
+<style type="text/css">
+#contact-form, #contact-form input, #contact-form textarea {
+    font-family: "Gentium Basic","Palatino",Georgia,serif;
+}
+#contact-form li {
+    list-style-type: none;
+    margin-bottom: 1em;
+}
+
+#contact-form li.error label {
+    color: #900;
+}
+#contact-form input, #contact-form textarea {
+	border:1px solid #ccc;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	font-size:12pt;
+	padding:5px;
+}
+#contact-form li.error input, #contact-form li.error textarea {
+    border: 1px solid #900;
+}
+#contact-form input[type="text"], #contact-form textarea {
+	background: #eee;
+}
+#contact-form input[type="text"]:focus, #contact-form textarea:focus {
+    background: #fff;
+}
+#contact-form .submit {
+    background: #eee;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	width:200px;
+}
+
+#contact-form input {
+	width:400px;
+}
+
+#contact-form textarea {
+	margin-top:5px;
+	height:190px;
+	width:400px;
+}
+#contact-form .errorlist li {
+	color:#900;
+	margin:0;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="flatpage">
+<h2>Contact</h2>
+<p>How am I doing? Do you have a question for me? Want to talk about some of my work? Let&rsquo;s get in touch!</p>
+<p>Shoot me an e-mail, via the form below. You can also e-mail me the old-fashioned way or contact me through most social networks, if you wish: <a href="/about/#contact">details here</a>.</p>
+<hr style="margin:2em 0" />
+<form action="" method="post" id="contact-form">
+    <ul>
+    {% for field in form.visible_fields %}{% spaceless %}
+        <li class="{% if field.errors %}error{% endif %}">
+            {{ field.label_tag }}:<br />{{ field }}
+            {{ field.errors }}
+        </li>
+        {% endspaceless %}
+    {% endfor %}
+    <li style="text-align:right;width:410px"><input class="submit" type="submit" value="Send message" /></li>
+    </ul>
+    
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+    {# {% csrf_token %} #}
+</form>
+</div>
+{% endblock %}

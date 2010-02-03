@@ -1,0 +1,11 @@
+{% extends 'blog/_base.html' %}
+{% load typogrify %}
+
+{% block title %}{% if flatpage.title %}{{ flatpage.title }} - {% endif %}{{ block.super}}{% endblock %}
+
+{% block content %}
+<div class="flatpage" id="flatpage-{{ flatpage.id }}">
+    <h2><a href="{{ poflatpagest.get_absolute_url }}">{{ flatpage.title|typogrify }}</a></h2>
+    <div class="content">{{ flatpage.content|safe }}</div>
+</div>
+{% endblock %}

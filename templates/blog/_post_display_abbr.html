@@ -1,0 +1,47 @@
+{% load typogrify %}
+<div class="post" id="post-{{ post.id }}">
+
+    <h2 style="margin-bottom:0"><a href="{{ post.get_absolute_url }}">{% if post.title %}{{ post.title|typogrify }}{% else %}Untitled{% endif %}</a>{% if not post.is_live %}*{% endif %}</h2>
+    {# {% ifnotequal post.post_type.pk 1 %}<p class="subtitle">A <a href="">{{ post.post_type}}</a></p>{% endifnotequal %} #}
+    <div class="meta" style="margin-top:.5em">
+        {% include 'blog/bits/post_metadate.html' %}
+        {% with post.absolute_uri as absolute_uri %}
+        {% include 'blog/bits/post_share.html' %}
+        {% endwith %}
+    </div>
+</div>
+<script type="text/javascript">
+// Use "one" so that clicking on title again goes to permalink for real
+jQuery("#share-{{ post.id }}").hide();
+
+jQuery("#post-{{ post.id }} h2 a").one('click',function() {
+    // Create an AJAX-ish "loading" icon
+    jQuery("#post-{{ post.id }} h2 a").after(
+        '<span id="post-loading-{{ post.id }}"><br /><img style="border:none;margin-left:10px" src="{{ MEDIA_URL }}style/201001/images/ajax_busy.gif"/></span>'
+    );
+    
+    // Do the data loading request.
+    jQuery.getJSON(
+        "{{ post.get_absolute_url }}json/",
+        function(json) {
+            // Inject the post body into a hidden div
+            jQuery("#post-{{ post.id }} h2").css('margin-bottom','1em');
+            jQuery("#post-{{ post.id }} .meta").before('<div class="content"></div>');
+            jQuery("#post-{{ post.id }} .content").hide().html(json[0].fields.body);
+                        
+            // Make the div appear
+            jQuery("#post-{{ post.id }} .content").slideDown(500, function() {
+                // Tell any scripts to refresh
+                MinutiaeTools.page_refresh();
+                
+                // Destroy the "loading" icon
+                jQuery("span#post-loading-{{ post.id }}").remove();
+
+                // Show the "share" link
+                jQuery("#share-{{ post.id }}").before(" &bull; ").show();
+            });
+        }
+    );
+    return false;
+});
+</script>

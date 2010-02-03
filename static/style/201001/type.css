@@ -1,0 +1,84 @@
+/*
+Gentium, developed by SIL
+Used under the SIL Open Font License
+http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=gentium
+*/
+@font-face {
+	font-family: 'Gentium Basic';
+	src: url('typeface/GenBasR.eot');
+	src: local('Gentium Basic Regular'), local('GentiumBasic'), url('typeface/GenBasR.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Gentium Basic';
+	src: url('typeface/GenBasB.eot');
+	src: local('Gentium Basic Bold'), local('GentiumBasic-Bold'), url('typeface/GenBasB.ttf') format('truetype');
+	font-weight: bold;
+}
+@font-face {
+	font-family: 'Gentium Basic';
+	src: url('typeface/GenBasI.eot');
+	src: local('Gentium Basic Italic'), local('GentiumBasic-Italic'), url('typeface/GenBasI.ttf') format('truetype');
+	font-style: italic;
+}
+@font-face {
+	font-family: 'Gentium Basic';
+	src: url('typeface/GenBasBI.eot');
+	src: local('Gentium Basic Bold Italic'), local('GentiumBasic-BoldItalic'), url('typeface/GenBasBI.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+html, body {
+    font-family: "Gentium Basic","Palatino",Georgia,serif;
+    font-size: 16px;
+}
+
+h1, h2, .pagination, .nav, #navtoggle, #tagline {
+    font-family: "HelveticaNeue-Light","HelveticaNeueLight","Helvetica Neue","Segoe UI",Arial,sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 32pt;
+}
+
+#tagline {
+    font-size: 11pt;
+}
+
+h2 {
+    line-height: 1.1em;
+    font-size: 28pt;
+}
+.post .subtitle {
+    font-style: italic;
+}
+.post, .flatpage {
+    line-height: 1.6em;
+}
+h3 {
+    font-size: 16pt;
+    font-weight: normal;
+    font-variant: small-caps;
+}
+
+.pagination, .nav, #navtoggle {
+    font-family: "HelveticaNeueRegular","HelveticaNeue-Roman","Helvetica Neue","Segoe UI",Arial,sans-serif;
+}
+#footer {
+    font-family: "HelveticaNeue-Light","HelveticaNeueLight","Helvetica Neue","Segoe UI",Arial,sans-serif;
+    font-weight: 300;
+}
+.pagination {
+    font-size: 13pt;
+}
+.nav {
+    font-size: 19px;
+}
+#navtoggle {
+    font-size: 14pt;
+}
+#footer {
+    text-align: center;
+    font-size: 14px;
+}

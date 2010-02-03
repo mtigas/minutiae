@@ -1,0 +1,31 @@
+<div class="pagination">
+        <p style="width:30%;margin:0;float:left;text-align:left;vertical-align:top"{% if left_link %} class="cufon"{% endif %}>{% if left_link %}<a href="{{ left_link_url }}">&laquo; {{ left_link }}</a>{% else %}&nbsp;{% endif %}</p>
+
+        <p style="width:30%;margin:0;float:right;text-align:right"{% if right_link %} class="cufon"{% endif %}>{% if right_link %}<a href="{{ right_link_url }}">{{ right_link }} &raquo;</a>{% else %}&nbsp;{% endif %}</p>
+
+        <form class="sitesearch" action="http://www.google.com/cse" style="margin:0 auto;text-align:center">
+            <input name="q" style="width:30%" placeholder="Looking for something?"/>
+            <input type="hidden" name="num" value="100"/>
+            <input type="hidden" name="cx" value="007142152756019231289:wto6qs5ohs4"/>
+        </form>
+        <br class="clear"/>
+</div>
+{% if year_objects %}
+    <div id="datenav" class="nav">{% for num,year in year_objects %}<a href="{% url blog:archive_year year.date_obj.year %}" id="archive_year_link_{{ year.date_obj|date:"Y"}}">{{ year.date_obj|date:"Y"}}</a> | {% for month in year.months %}<span title="{{ month.date_obj|date:"F Y"}}" id="archive_month_link_{{month.date_obj|date:"Y_m"}}">{% if month.is_active %}<a href="{% url blog:archive_month year.date_obj.year month.date_obj|date:"m" %}">{% endif %}{{ month.date_obj|date:"M" }}{% if month.is_active %}</a>{% endif %}</span>{% if not forloop.last %} {% endif %}{% endfor %}{% if not forloop.last %}<br />{% endif %}{% endfor %}</div>
+    <br class="clear"/>
+
+<script type="text/javascript">
+    jQuery("#datenav").before('<div id="navtoggle"><a href="">Archive</a></div>').hide();
+    jQuery("#navtoggle a").toggle(
+        function(){
+            jQuery("#datenav").slideDown(500);
+            return false;
+        },
+        function(){
+            jQuery("#datenav").slideUp(500);
+            return false;
+        }
+    );
+
+</script>
+{% endif %}

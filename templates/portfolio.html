@@ -1,0 +1,121 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}Portfolio - Mike Tigas{% endblock %}
+{% block h1 %}{{ block.super }}: Portfolio{% endblock %}
+
+{% block headextra %}
+<script type="text/javascript">
+    jQuery(function() {
+        jQuery(".portfolio-teaser").css('cursor','pointer').each(function() {
+            var teaser_id = this.id;
+            var portfolio_id = teaser_id.replace('teaser-','');
+
+            jQuery(this).click(function() {
+                jQuery('html, body').animate({
+                    scrollTop: jQuery("#"+portfolio_id).offset().top
+                }, 400);
+                return false;
+            });
+        });
+    });
+</script>
+<style type="text/css">
+    .portfolio-teaser img {
+        vertical-align: middle;
+        margin: 5px;
+    }
+    .portfolio-item {
+        margin:4em 0
+    }
+    .portfolio-item ul, .portfolio-item ul li {
+        list-style-position:outside;
+        list-style-type:none;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .portfolio-item ul li ul {
+        padding-left: 2em;
+    }
+    .portfolio-item h2 {
+        font-size: 20pt;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="flatpage" id="flatpage-portfolio">
+    {# <h2><a href="/portfolio/">Portfolio</a></h2> #}
+    <div class="content">
+            <p>I make Web sites for a living. I&rsquo;m a freelance Web developer, primarily working for the news media and interactive entertainment industries. [&hellip;]</p>
+            <p>Clients and brands I&rsquo;ve worked with include: <a href="http://www.spokesman.com/">The Spokesman-Review</a> (Spokane, Wash.), <a href="http://www.komu.com/">KOMU-8 TV</a> (NBC affiliate; Columbia, Mo.), and Infinity Ward&rsquo;s <a href="http://www.modernwarfare2.com/"><i>Call of Duty: Modern Warfare 2</i></a>.</p>
+        <p style="text-align:right;margin-right:4em">&mdash;From <a href="/about/">my bio</a></p>
+        <hr />
+        <div style="margin:2em 0">
+            <h2>Projects</h2>
+            <p style="text-align:center">
+                <a class="portfolio-teaser" id="teaser-komunews" href="#komunews"><img src="http://media1.mike.tig.as/files/20100129/komu.jpg" alt="KOMU News iPhone App" width="150"/></a>
+                <a class="portfolio-teaser" id="teaser-mmpr" href="#mmpr"><img src="http://media3.mike.tig.as/style/201001/images/mmpr-500.png" alt="Mighty Morphin Power Rangers" width="150"/></a>
+                <a class="portfolio-teaser" id="teaser-mw2" href="#mw2"><img src="http://media3.mike.tig.as/style/201001/images/mw2-sm.png" alt="Modern Warfare 2" width="150"/></a>
+                <a class="portfolio-teaser" id="teaser-spokesman" href="#spokesman"><img src="http://media1.mike.tig.as/files/20090213/spokesman6.png" alt="The Spokesman-Review" width="150"/></a>
+                <a class="portfolio-teaser" id="teaser-maneater" href="#maneater"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper" width="150"/></a>
+                <a class="portfolio-teaser" id="teaser-nna" href="#nna"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association" width="150"/></a></p> 
+        </div>
+        <hr />
+        <div class="portfolio-item" id="komunews">
+            <h2>KOMU News iPhone App</h2>
+            <ul>
+                <li>September 2009&ndash;Present</li>
+                <li>Objective-C development, PHP-based middleware development</li>
+                <li>Projected release date: Q2 2010</li>
+            </ul>
+            <p><a href="http://www.komu.com/"><img src="http://media1.mike.tig.as/files/20100129/komu.jpg" alt="KOMU News iPhone App" width="500"/></a></p>
+        </div>
+        <div class="portfolio-item" id="mmpr">
+            <h2>Mighty Morphin Power Rangers</h2>
+            <ul>
+                <li>December 2009&ndash;January 2010</li>
+                <li>PHP backend development<ul><li>custom CMS admin panel, storefront management system</li></ul></li>
+            </ul>
+            <p><a href="http://www.bandai.com/powerrangers/mmpr/"><img src="http://media3.mike.tig.as/style/201001/images/mmpr-500.png" alt="Mighty Morphin Power Rangers" width="500"/></a></p>
+        </div>
+        <div class="portfolio-item" id="mw2">
+            <h2>Call of Duty: Modern Warfare 2</h2>
+            <ul>
+                <li>August 2009&ndash;November 2009</li>
+                <li>PHP backend development<ul><li>CMS customizations, internationalization backend, social network API integration</li></ul></li>
+            </ul>
+            <p><a href="http://modernwarfare2.infinityward.com/"><img src="http://media3.mike.tig.as/style/201001/images/mw2-sm.png" alt="Modern Warfare 2" width="500"/></a></p>
+        </div>
+        <div class="portfolio-item" id="spokesman">
+            <h2>The Spokesman-Review</h2>
+            <ul>
+                <li>2008&ndash;Present</li>
+                <li>Django/Python backend development<ul><li>data modeling, custom full-text search backend, <a href="http://www.opencalais.com/">Reuters OpenCalais</a> integration, GIS (geolocation, mapping) development, dynamic (jQuery/AJAX) user interface development</li></ul></li>
+            </ul>
+            <p><a href="http://www.spokesman.com/"><img src="http://media1.mike.tig.as/files/20090213/spokesman6.png" alt="The Spokesman-Review" width="500"/></a></p> 
+        </div>
+        <div class="portfolio-item" id="maneater">
+            <h2>The Maneater Student Newspaper</h2>
+            <ul>
+                <li>2005&ndash;2008</li>
+                <li>Online Editor (2006-2007), Asst. Online Editor (2007-2008)
+                    <ul><li>Managed content updates, including breaking news. Maintained PHP-powered Web site from 2006-2007. Developed and deployed <a href="/2008/02/10/themaneatercom-launch/">new Django-powered Web site</a> in early 2008. Implemented, produced, and managed initial multimedia offerings including podcasts.</li></ul>
+                </li>
+            </ul>
+            <p><a href="http://www.themaneater.com/"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper" width="500"/></a></p> 
+        </div>
+        <div class="portfolio-item" id="nna">
+            <h2>The National Newspaper Association</h2>
+            <ul>
+                <li>2007</li>
+                <li>PHP frontend/backend development
+                    <ul><li>Designed and integrated a complete Web site overhaul from aged, proprietary CMS into a Wordpress-powered backend.</li></ul>
+                </li>
+            </ul>
+            <p><a href="http://www.nna.org/"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association" width="500"/></a></p> 
+        </div>
+    </div>
+
+</div>
+{% endblock %}

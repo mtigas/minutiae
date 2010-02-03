@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{% block title %}Mike Tigas{% endblock %}</title>
+<meta name="description" content="{% block meta_description %}Loud thinking from the mind of Mike Tigas.{% endblock %}"/>
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}"/>
+
+<link rel="icon" type="image/png" href="{{ MEDIA_URL }}favicon.png" />
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ MEDIA_URL }}favicon.ico" />
+
+<link rel="alternate" type="application/atom+xml" title="Latest Posts Feed" href="http://feeds.feedburner.com/mtigas"/> 
+
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}style/201001/main.css"/>
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}style/201001/type.css"/>
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}style/201001/color.css"/>
+{% comment %}<!--[if lt IE 7]><style type="text/css" rel="stylesheet">
+.social_icon_list img { behavior: url("/static/style/201001/iepngfix.htc");  }
+</style><![endif]-->
+{% endcomment %}
+<link rel="apple-touch-icon" href="{{ MEDIA_URL }}icon128.png" />
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="viewport" content="width=520,initial-scale = 0.55"/>
+<meta name="google-site-verification" content="WHzeL7iT8fTO9nw5kIpbkOOhR9dwEFZDV85O_IN0OQs"/>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+</script>
+<script type="text/javascript" src="{{ MEDIA_URL }}style/201001/init.js"></script>
+{% block headextra %}{% endblock %}
+</head>
+
+<body>
+    <div class="wrap_a"><div id="header">{% block headerdiv %}
+        <h1>{% block h1 %}<a href="{% url blog:home %}">Minuti&aelig;</a>{% endblock %}</h1>
+        <p id="tagline">{% block tagline %}Loud thinking from the mind of <a href="/about/" class="name">Mike Tigas</a>.{% endblock %}</p>
+    {% endblock %}</div></div>
+
+    <div class="wrap_b"><div id="pagecontent">
+        {% block content %}{% endblock %}
+    </div></div>
+
+    <div class="wrap_a"><div id="footer">{% block footerdiv %}
+        <p>This is the personal blog of Mike Tigas (<a href="/about/">about</a>, <a href="/contact/">contact</a>), a Columbia, Missouri-based Web developer with experience in the media industry (<a href="/portfolio/">portfolio</a>).</p>
+        <p>Powered by <a href="http://www.djangoproject.com/">Django</a>, <a href="http://www.slicehost.com/">Slicehost</a> and <a href="http://aws.amazon.com/s3/">S3</a>/<a href="http://aws.amazon.com/cloudfront/">CloudFront</a>.  <a href="/colophon/" title="Colophon">See the colophon</a>.</p>
+        <p>&#169; 2001&ndash;{% now "Y" %} Mike Tigas, <a href="/colophon/#license">some rights reserved &mdash; see license for details</a>.</p>
+    {% endblock %}<br class="clear"/></div></div>
+
+{% block endbody %}
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3595949-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+{% endblock %}
+</body>
+</html>

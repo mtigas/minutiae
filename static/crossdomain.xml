@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+<allow-access-from domain="*.tig.as" secure="false"/>
+<allow-access-from domain="miketigas.com" secure="false"/>
+<allow-access-from domain="*.miketigas.com" secure="false"/>
+<allow-access-from domain="lolwut.me" secure="false"/>
+<allow-access-from domain="*.lolwut.me" secure="false"/>
+<allow-access-from domain="lolme.me" secure="false"/>
+<allow-access-from domain="*.lolme.me" secure="false"/>
+<allow-access-from domain="nationbrowse.com" secure="false"/>
+<allow-access-from domain="*.nationbrowse.com" secure="false"/>
+<allow-access-from domain="media.miketigas.com.s3.amazonaws.com" secure="false"/>
+<allow-access-from domain="nationbrowse.s3.amazonaws.com" secure="false"/>
+<allow-access-from domain="173.45.228.60" secure="false"/>
+</cross-domain-policy>

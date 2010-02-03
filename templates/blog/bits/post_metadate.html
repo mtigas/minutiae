@@ -1,0 +1,1 @@
+<span class="date"><a href="{% url blog:archive_month post.pubdate.year post.pubdate_month %}">{{ post.pubdate|date:"F" }}</a> <a href="{% url blog:archive_day post.pubdate.year post.pubdate_month post.pubdate_day %}">{{ post.pubdate|date:"j" }}</a>, <a href="{% url blog:archive_year post.pubdate.year %}">{{ post.pubdate|date:"Y" }}</a><!-- {{ post.pubdate|date:"p" }} --></span>

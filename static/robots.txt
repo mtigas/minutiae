@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /files/
+Disallow: /static/
+Disallow: /style/
+Disallow: /__mtadmin_/
+Sitemap: http://mike.tig.as/sitemap.xml

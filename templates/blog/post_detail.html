@@ -1,0 +1,14 @@
+{% extends 'blog/_base.html' %}
+{% load site_bits %}
+
+{% block headextra %}
+<link rel="shorturl" href="http://mike.tig.as/b/{{ post.pk }}"/>
+{% endblock %}
+
+{% block title %}{% if post.title %}{{ post.title }}{% else %}Untitled{% endif %} - {{ block.super}}{% endblock %}
+
+{% block content %}
+{% include 'blog/_post_display.html' %}
+{% nav_footer %}
+
+{% endblock %}

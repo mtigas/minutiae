@@ -1,0 +1,17 @@
+{% extends 'blog/_base.html' %}
+{% load site_bits %}
+
+{% block content %}
+{% for post in object_list %}
+    {% ifequal page_obj.number 0 %}{% include 'blog/_post_display.html' %}
+    {% else %}{% include 'blog/_post_display_abbr.html' %}
+    {% endifequal %}
+{% endfor %}
+
+{% nav_footer %}
+{% endblock %}
+
+{% block endbody %}
+{{ block.super }}
+<script type="text/javascript" src="http://s3.amazonaws.com/new.cetrk.com/pages/scripts/0000/5628.js"> </script>
+{% endblock %}
