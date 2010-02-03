@@ -15,4 +15,4 @@ for the benefit of those learning how to deploy Django+Apache/mod_wsgi behind ng
 
 [nginxcache]: http://weichhold.com/2008/09/12/django-nginx-memcached-the-dynamic-trio/
 
-[Comments are welcome.](http://mike.tig.as/contact/)
+[Questions and comments are welcome.](http://mike.tig.as/contact/)

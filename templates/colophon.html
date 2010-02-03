@@ -6,32 +6,54 @@
 {% block content %}
 <div class="flatpage" id="flatpage-colophon">
     <div class="content">
+        <p>This is a colophon &mdash; a description about the production and details of this site. It&rsquo;s incredibly verbose, partially because of my obsessive-compulsiveness over the little details. (Oh hell, the site&rsquo;s called &ldquo;minuti&aelig;&rdquo; for a reason.)</p>
+        {% comment %}
         <h3>A brief history</h3>
         <p>This Web site has evolved from a simple blog which was maintained by hand, in raw HTML. In 2004, I switched to the now-defunct <b>pMachine</b> CMS because the manual archiving and indexing process was becoming a <i>royal pain</i>. pMachine was replaced by <b>WordPress</b> a mere three months later and I kept with it for a good four years.</p>
         <p>I started playing with Django in late 2007 while working at <a href="http://www.themaneater.com/">The Maneater Student Newspaper</a>. Along the way, I picked up the urge to build myself a blog &mdash; from scratch, in Django. It seems a common <a href="http://jeffcroft.com/">rite</a> <a href="http://www.b-list.org/">of</a> <a href="http://www.devurandom.org/">passage</a> among Django developers these days.</p>
         <p>In 2008, I broke down and did it. In early 2009, the site went through a minor redesign. In 2010, the site was completely rewritten to cut out some of the messier bits.</p>
-
+        {% endcomment %}
+        <hr />
+        <h3 id="source">Source code</h3>
+        <p>This site is open source! Most of the files powering this site &mdash; including Django backend code, templates, CSS design files, and server configuration examples &mdash; <a href="http://github.com/mtigas/minutiae">are available on github</a>.</p>
+        <p>Please see &ldquo;<a href="#license">License</a>&rdquo; below, regarding usage rights.</p>
+        <hr />
+        
         <h3 id="design">Design</h3>
         <p></p>
         <ul>
         <li>Pages are 500px wide, in a one-column setup.</li>
-        <li>Main header fonts are generally <a href="http://en.wikipedia.org/wiki/Helvetica">Helvetica Neue Light</a>, <a href="http://www.josbuivenga.demon.nl/museosans.html">Museo Sans 100</a>, <a href="http://www.ellak.gr/fonts/mgopen/">MgOpenModerna</a>,  <a href="http://en.wikipedia.org/wiki/Segoe">Segoe UI</a> or something similar. (This changes occasionally.)</li>
-        <li>The body (and small header) font is <a href="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;id=gentium">Gentium Basic</a>. The base font size is around 16px &mdash; much larger than most sites use. Generally, I try to follow the rule of thumb of <i>60&ndash;80 characters per line</i>. The theory behind these choices are inspired by Robert Bringhurst&rsquo;s <a href="http://www.amazon.com/gp/product/0881792063?ie=UTF8&amp;tag=a139edb21c-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0881792063">Elements of Typographic Style</a><img src="http://www.assoc-amazon.com/e/ir?t=a139edb21c-20&amp;l=as2&amp;o=1&amp;a=0881792063" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> and this <a href="http://www.wilsonminer.com/posts/2008/oct/20/relative-readability/">design and discussion by Wilson Miner</a>.</li>
-        <li>By the way, some custom fonts are loaded via the CSS3 @font-face tag &mdash; which is amazingly supported by Internet Explorer 6. You can read about it <a href="http://www.css3.info/preview/web-fonts-with-font-face/">here</a> or <a href="https://developer.mozilla.org/index.php?title=En/CSS/@font-face">here</a>.</li>
+        <li>Main header fonts are generally <a href="http://en.wikipedia.org/wiki/Helvetica">Helvetica Neue Light</a>, or if that&rsquo;s not available, the free &amp; open source <a href="http://mplus-fonts.sourceforge.jp/mplus-outline-fonts/index-en.html">M<sup>+</sup> P Type 1 Light</a> is used instead.</li>
+        <li>The body (and small header) font is <a href="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;id=gentium">Gentium Basic</a>.</li>
+        <li>Custom fonts (including <i>M<sup>+</sup> P Type 1</i> and <i>Gentium Basic</i>) are loaded via the CSS3 @font-face tag, rather than SIFR or Cuf&#243;n. You can read about that <a href="http://www.css3.info/preview/web-fonts-with-font-face/">here</a> or <a href="https://developer.mozilla.org/index.php?title=En/CSS/@font-face">here</a>.</li>
+        <li>And again, <a href="#source">this is open all source</a>. You can find the design-specific files <a href="http://github.com/mtigas/minutiae/tree/master/static/style/201001/">here</a> and <a href="http://github.com/mtigas/minutiae/tree/master/templates/">here</a> within the repository.</li>
         </ul>
         
         <h3 id="backend">Backend</h3>
-        <ul><li>The meat-and-potatoes of the site consist of a custom-built blogging app (among other tools) programmed in <a href="http://python.org/">Python</a> and powered by <a href="http://www.djangoproject.com/">the Django framework</a>.<ul><li>I&rsquo;m using Django&rsquo;s trunk version and update it occasionally. My server says I&rsquo;m running the following Django version: <code>{% current_django_version %}</code>.</li></ul></li>
-        <li>I use <a href="http://code.google.com/p/typogrify/">typogrify</a> to keep headlines neat and tidy.</li>
-        <li><a href="http://bitbucket.org/ubernostrum/django-contact-form/">django-contact-form</a> powers <a href="/contact/">the contact form</a>. (Of course!)</li>
+        <ul><li>The meat-and-potatoes of the site consist of a custom-built blogging app (among other tools) programmed in <a href="http://python.org/">Python</a> and powered by <a href="http://www.djangoproject.com/">the Django framework</a>.<ul><li>I&rsquo;m using Django&rsquo;s trunk version and update it frequently. My server says I&rsquo;m running the following Django version: <code>{% current_django_version %}</code>.</li></ul></li>
+        <li><a href="http://github.com/mtigas/minutiae/blob/master/update_dependencies.sh">Some other dependencies</a>:
+            <ul>
+            <li>I use <a href="http://code.google.com/p/typogrify/">typogrify</a> to keep headlines neat and tidy. (Which in turn uses <a href="http://web.chad.org/projects/smartypants.py/">Smartypants</a>.)</li>
+            <li><a href="http://bitbucket.org/ubernostrum/django-contact-form/">django-contact-form</a> powers <a href="/contact/">the contact form</a>.</li>
+            <li><a href="http://www.voidspace.org.uk/python/akismet_python.html">akismet.py</a> helps the contact form filter out spam submissions</a>.</li>
+            </ul>
+        </li>
         </ul>
+        
         <h3>Hosting</h3>
         <ul>
         <li>This site is hosted on a 256 slice at <a href="http://www.slicehost.com/">Slicehost</a>, in my good ol&rsquo; hometown of St. Louis, Missouri. They rock.</li>
-        <li>My server runs <a href="http://www.ubuntu.com/">Ubuntu 9.10</a> using <a href="http://wiki.nginx.org/">nginx</a> in front of Apache, which serves <a href="http://docs.djangoproject.com/en/dev/howto/deployment/modwsgi/">Django via mod_wsgi</a>. Data lives in <a href="http://www.postgresql.org/">PostgreSQL</a>. <a href="http://www.danga.com/memcached/">Memcached</a> is used here and there to speed things up a bit &mdash; <a href="http://weichhold.com/2008/09/12/django-nginx-memcached-the-dynamic-trio/">nginx even directly serves pages from the Django cache</a>, for <a href="http://codysoyland.com/2010/jan/17/evaluating-django-caching-options/">awesome performance</a>.</li>
-        <li>Media is stored in <a href="http://aws.amazon.com/s3/">Amazon S3</a> and served out of <a href="http://aws.amazon.com/cloudfront/">CloudFront</a>. Text-based static files are served on a <a href="http://code.google.com/appengine/docs/whatisgoogleappengine.html">Google App Engine</a> instance, since Amazon S3 doesn&rsquo;t gzip compress (which is a killer for large JS/CSS). This is all overkill, but it&rsquo;s a cheap (or in App Engine&rsquo;s case, <i>free</i>) <a href="http://en.wikipedia.org/wiki/Content_delivery_network"><abbr title="Content Delivery Network">CDN</abbr></a> to play around with.</li>
+        <li>My server runs <a href="http://www.ubuntu.com/">Ubuntu 9.10</a> using <a href="http://wiki.nginx.org/">nginx</a> in front of Apache, which serves <a href="http://docs.djangoproject.com/en/dev/howto/deployment/modwsgi/">Django via mod_wsgi</a>. Data lives in <a href="http://www.postgresql.org/">PostgreSQL</a>. <a href="http://www.danga.com/memcached/">Memcached</a> is used here and there to speed things up a bit &mdash; <a href="http://weichhold.com/2008/09/12/django-nginx-memcached-the-dynamic-trio/">nginx even directly serves pages from the Django cache</a>, for <a href="http://codysoyland.com/2010/jan/17/evaluating-django-caching-options/">awesome performance</a>.
+            <ul><li><a href="http://github.com/mtigas/minutiae/tree/master/server_config/">Some example configuration files</a> are stored within the repository</a>, if you&rdquo;re interested in how I did this</li></ul>
+        </li>
+        <li>I generally upload multimedia files to <a href="http://aws.amazon.com/s3/">Amazon S3</a>/<a href="http://aws.amazon.com/cloudfront/">CloudFront</a>.</li>
+        <li>Text-based static files (like the site&rsquo;s styles) are served on a <a href="http://code.google.com/appengine/docs/whatisgoogleappengine.html">Google App Engine</a> instance, since Amazon S3 doesn&rsquo;t gzip compress.
+            <ul><li><a href="http://github.com/mtigas/minutiae/blob/master/app.yaml">You can view my <code>app.yaml</code></a> and <a href="http://github.com/mtigas/minutiae/blob/master/push.sh">my &ldquo;push to server&rdquo;script</a> if you want to know how I get things into my App Engine instance.</li></ul>
+        </li>
         <li>Oh, and I register most of my domains through <a href="http://www.godaddy.com/">GoDaddy</a> and the tig.as domain is registered directly at the <a href="https://nic.as/">.AS Domain Registry</a>. I manually edit my DNS records in SliceHost&rsquo;s panel.</li>
         </ul>
+        
+        <hr />
         <h3 id="license">License</h3>
         <p>Unless otherwise noted, all content on this site is &#169; 2001&ndash;{% now "Y" %} Mike Tigas. <b>all rights reserved</b>, unless otherwise noted:</p>
         <ul><li>Text content:
@@ -41,9 +63,11 @@
             <ul><li>Most of my Flickr images have Creative Commons licensing &mdash; click the image and check the original photo page for details. If you can&rsquo;t find license information, don&rsquo;t use it without asking.</li></ul>
         </li>
         <li>Design and backend source code:
-            <ul><li><a href="http://github.com/mtigas/minutiae">Check out the repository on github</a>. Code may be <a href="http://github.com/mtigas/minutiae/blob/master/LICENSE.txt">used under the New BSD License</a>. But please, don&rsquo;t just copy without learning from it.</li></ul>
+            <ul><li><a href="http://github.com/mtigas/minutiae">Check out the repository on github</a>. Code may be <a href="http://github.com/mtigas/minutiae/blob/master/LICENSE.txt">used under the New BSD License</a>.</li></ul>
         </li>
         </ul>
+
+        <hr />
         <h3 id="questions">Questions?</h3>
         <p>Questions about any of this? <a href="/about/#contact">Seek out my contact information</a> and ask me &mdash; I&rsquo;d be glad to tell you more.</p>
     </div>

@@ -1,7 +1,11 @@
 /*
-Gentium, developed by SIL
-Used under the SIL Open Font License
-http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=gentium
+Gentium Basic, developed by SIL
+http://scripts.sil.org/gentium
+
+Used under the SIL Open Font License:
+http://scripts.sil.org/OFL
+
+(See typeface/LICENSE.txt for full license.)
 */
 @font-face {
 	font-family: 'Gentium Basic';
@@ -28,13 +32,28 @@ http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=gentium
 	font-style: italic;
 }
 
+/*
+M+P (Type-1), by the M+ FONTS PROJECT
+http://mplus-fonts.sourceforge.jp/mplus-outline-fonts/index-en.html
+
+Used under "Free License."
+(See typeface/LICENSE.txt for full license.)
+*/
+@font-face {
+	font-family: 'M+1plight';
+	src: url('typeface/mplus-1p-light.eot');
+	src: local('M+ 1p light'), local('mplus-1p-light'), url('typeface/mplus-1p-light.ttf') format('truetype');
+}
+
+
+
 html, body {
     font-family: "Gentium Basic","Palatino",Georgia,serif;
     font-size: 16px;
 }
 
 h1, h2, .pagination, .nav, #navtoggle, #tagline {
-    font-family: "HelveticaNeue-Light","HelveticaNeueLight","Helvetica Neue","Segoe UI",Arial,sans-serif;
+    font-family: "HelveticaNeue-Light","HelveticaNeueLight","Helvetica Neue",'M+1plight',"Segoe UI",Arial,sans-serif;
     font-weight: 300;
 }
 
@@ -63,10 +82,10 @@ h3 {
 }
 
 .pagination, .nav, #navtoggle {
-    font-family: "HelveticaNeueRegular","HelveticaNeue-Roman","Helvetica Neue","Segoe UI",Arial,sans-serif;
+    font-family: "HelveticaNeueRegular","HelveticaNeue-Roman","Helvetica Neue",Arial,sans-serif;
 }
 #footer {
-    font-family: "HelveticaNeue-Light","HelveticaNeueLight","Helvetica Neue","Segoe UI",Arial,sans-serif;
+    font-family: "HelveticaNeue-Light","HelveticaNeueLight","Helvetica Neue",Arial,sans-serif;
     font-weight: 300;
 }
 .pagination {
