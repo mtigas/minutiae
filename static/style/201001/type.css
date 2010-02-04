@@ -68,6 +68,7 @@ h3 {
 
 .pagination, .nav, #navtoggle {
     font-family: "HelveticaNeueRegular","HelveticaNeue-Roman","Helvetica Neue",Arial,sans-serif;
+    font-weight: 300;
 }
 #footer, #tagline {
     font-family: "HelveticaNeue-Light","HelveticaNeueLight","Helvetica Neue",Arial,sans-serif;
