@@ -207,6 +207,10 @@ h2 {
 	margin-left:15em;
 	margin-right:3em;
 }
+.post .footnotes {
+    font-size:.85em;
+    margin-bottom:1em
+}
 sup {
 	line-height:0;
 }
