@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     
     # Blog & blog shorturl
     (r'^blog/', include('minutiae.blog.urls', namespace="blog", app_name="blog")),
-    (r'^b/(?P<post_id>\d+)/$', 'minutiae.blog.views.short_redir'),
+    #(r'^b/(?P<post_id>\d+)/$', 'minutiae.blog.views.short_redir'),
     
     # Some fake flatpages
     (r'^about/$', 'django.views.generic.simple.direct_to_template', { 'template':'about.html' }),
