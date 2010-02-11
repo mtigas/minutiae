@@ -151,7 +151,8 @@ def archive_year(request,year):
         year = year,
         queryset   = BlogPost.objects.filter(is_live=True),
         date_field = 'pubdate',
-        template_name = 'blog/date_archive_abbr.html',
+        #template_name = 'blog/date_archive_abbr.html',
+        template_name = 'blog/date_archive.html',
         make_object_list = True,
         template_object_name = 'object',
         extra_context = {
@@ -177,7 +178,8 @@ def archive_month(request,year,month):
         month_format = "%m",
         queryset   = BlogPost.objects.filter(is_live=True),
         date_field = 'pubdate',
-        template_name = 'blog/date_archive_abbr.html',
+        #template_name = 'blog/date_archive_abbr.html',
+        template_name = 'blog/date_archive.html',
         extra_context = {
             'title' : d.strftime("%B %Y"),
             'date_archive' : 'month'

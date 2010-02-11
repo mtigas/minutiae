@@ -4,7 +4,7 @@
 {% block content %}
 {% for post in object_list %}
     {% ifequal page_obj.number 0 %}{% include 'blog/_post_display.html' %}
-    {% else %}{% include 'blog/_post_display_abbr.html' %}
+    {% else %}{% include 'blog/_post_display.html' %}
     {% endifequal %}
 {% endfor %}
 
