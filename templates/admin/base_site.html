@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | Minuti&aelig; Control Panel{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">Minuti&aelig; Control Panel</h1>
+{% endblock %}
+
+{% block userlinks %}
+<a href="https://www.google.com/analytics/settings/">Analytics</a> / 
+<a href="https://feedburner.google.com/">FeedBurner</a> || 
+{{ block.super }}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
