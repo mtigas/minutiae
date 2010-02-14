@@ -39,7 +39,7 @@ class FooterNode(template.Node):
         if page is not None:
             if page is 0:
                 right_link = "Older"
-                right_link_url = reverse("blog:archive",args=[1,])
+                right_link_url = reverse("blog:archive",args=[2,])
             else:
                 try:
                     has_previous = template.Variable("page_obj.has_previous").resolve(context)

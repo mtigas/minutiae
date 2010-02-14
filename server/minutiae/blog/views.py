@@ -67,10 +67,19 @@ def index(request):
     )
 
 def archive(request,page=None):
+    if not page:
+        page = 1
+    if (int(page) is 1):
+        url = reverse("blog:home")
+        return redirect_to(
+            request,
+            url,
+            permanent=False
+        )
     return list_detail.object_list(
         request,
         queryset   = BlogPost.objects.filter(is_live=True),
-        paginate_by = 10,
+        paginate_by = 5,
         page = page,
         template_name = 'blog/index.html',
         template_object_name = 'object'
