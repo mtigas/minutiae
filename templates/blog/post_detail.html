@@ -2,7 +2,7 @@
 {% load site_bits %}
 
 {% block headextra %}
-<link rel="shorturl" href="http://mike.tig.as/b/{{ post.pk }}"/>
+{%comment%}<link rel="shorturl" href="http://mike.tig.as/b/{{ post.pk }}"/>{%endcomment%}
 {% endblock %}
 
 {% block title %}{% if post.title %}{{ post.title }}{% else %}Untitled{% endif %} - {{ block.super}}{% endblock %}
