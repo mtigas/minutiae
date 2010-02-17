@@ -12,7 +12,7 @@ git push --force github master
 ssh -C 173.45.236.2 "
 cd mt2
 git reset --hard HEAD
-git gc
+git gc --aggressive
 ./update_dependencies.sh
 
 touch wsgi.py
@@ -26,4 +26,4 @@ find . -name \"*.pyo\" -delete
 # Clean up locally, for the hell of it.
 find . -name "*.pyc" -delete
 find . -name "*.pyo" -delete
-git gc
+git gc --aggressive
