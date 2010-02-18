@@ -3,7 +3,9 @@ from django.views.generic.simple import direct_to_template,redirect_to
 from django.http import HttpResponse,Http404
 from django.core import serializers
 from django.core.urlresolvers import reverse,NoReverseMatch
+from django.conf import settings
 from models import BlogPost
+import hashlib
 from datetime import datetime,date
 
 def double_digit_checker(request,year,month,day=None):
@@ -105,10 +107,29 @@ def post(request,year,month,day,slug):
         d = date(int(year),int(month),int(day))
     except:
         raise Http404
+
+    # Generate a preview code -- lets admin distribute a URL to nonprivieged users
+    # to view non-published posts.
+    preview_code = hashlib.sha512("%s%s%s%s%s%s"%(
+        datetime.now().strftime("%Y%U"), # expire code based on week
+        year,
+        month,
+        day,
+        slug,
+        settings.SECRET_KEY
+    )).hexdigest()
+    preview_code = hashlib.sha512("%s%s%s%s%s%s"%(preview_code,year,month,day,slug,settings.SECRET_KEY)).hexdigest()
+    preview_code = hashlib.md5(preview_code+settings.SECRET_KEY).hexdigest()
     
     if request.user.is_authenticated() and request.user.is_superuser:
         # Superusers can view posts that are not yet live (so admin's "view on site" works to preview)
         qs = BlogPost.objects.all()
+    elif 'code' in request.GET:
+        # If we match the preview code, show any article regardless of publish status and date.
+        if preview_code == request.GET['code']:
+            qs = BlogPost.objects.all()
+        else:
+            qs = BlogPost.objects.filter(is_live=True,pubdate__lte=datetime.now())
     else:
         qs = BlogPost.objects.filter(is_live=True,pubdate__lte=datetime.now())
     
@@ -123,7 +144,11 @@ def post(request,year,month,day,slug):
         slug_field = 'slug',
         date_field = 'pubdate',
         template_name = 'blog/post_detail.html',
-        template_object_name = 'post'
+        template_object_name = 'post',
+        extra_context = dict(
+            preview_code=preview_code,
+            request=request
+        )
     )
 
 def post_json(request,year,month,day,slug):

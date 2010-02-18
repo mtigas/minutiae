@@ -8,6 +8,7 @@
 {% block title %}{% if post.title %}{{ post.title }}{% else %}Untitled{% endif %} - {{ block.super}}{% endblock %}
 
 {% block content %}
+{% if request.user.is_superuser %}<!-- {{ post.get_absolute_url }}?code={{ preview_code }} -->{% endif %}
 {% include 'blog/_post_display.html' %}
 {% nav_footer %}
 
