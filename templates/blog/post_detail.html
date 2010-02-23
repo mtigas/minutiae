@@ -1,6 +1,8 @@
 {% extends 'blog/_base.html' %}
 {% load site_bits %}
 
+{% block meta_description %}{% if post.description %}{{ post.description }}{% else %}{{ post.body|striptags|truncatewords:35 }}{% endif %}{% endblock %}
+
 {% block headextra %}
 {%comment%}<link rel="shorturl" href="http://mike.tig.as/b/{{ post.pk }}"/>{%endcomment%}
 {% endblock %}

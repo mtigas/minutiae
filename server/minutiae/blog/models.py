@@ -21,9 +21,10 @@ class BlogPost(models.Model):
     
     post_type = models.ForeignKey(PostCategory,default=1)
     
-    title   = models.CharField(max_length=255,blank=True)
-    slug    = models.CharField(max_length=255)
-    body    = models.TextField()
+    title = models.CharField(max_length=255,blank=True)
+    description = models.CharField(max_length=255,blank=True)
+    slug = models.CharField(max_length=255)
+    body = models.TextField()
     pubdate = models.DateTimeField(default=datetime.now)
     is_live = models.BooleanField(default=False)
     

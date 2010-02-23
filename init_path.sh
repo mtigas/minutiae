@@ -13,4 +13,4 @@ alias cleanpy='find $PROJECT_DIR -name "*.pyc" -delete;find $PROJECT_DIR -name "
 cleanpy
 
 # Refresh the 'third_party' directory.
-./update_dependencies.sh
+#./update_dependencies.sh
