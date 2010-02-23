@@ -20,7 +20,7 @@ class BlogPostAdmin(admin.ModelAdmin):
 
     save_on_top = True
     fieldsets = (
-        ('Content', {'fields': (('title', 'slug'), 'body')}),
+        ('Content', {'fields': (('title', 'slug'), 'description', 'body')}),
         ('Metadata', {'fields': ('is_live', 'pubdate', 'post_type')}),
     )
     list_display = ('title', 'pubdate', 'post_type', 'is_live')
