@@ -204,8 +204,8 @@ h2 {
 }
 .post .content p.citation {
 	text-align:right;
-	margin-left:15em;
-	margin-right:3em;
+	margin-left:6em;
+	margin-right:0;
 }
 .post .footnotes {
     font-size:.85em;

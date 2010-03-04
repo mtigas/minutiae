@@ -5,7 +5,7 @@ git push --force origin master
 git push --force github master
 
 # Push static files to app engine
-#appcfg.py update .
+python2.5 `which appcfg.py` update .
 
 # Reset server's working git copy to HEAD,
 # restart server processes.
