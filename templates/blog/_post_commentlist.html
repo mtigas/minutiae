@@ -1,0 +1,35 @@
+{% load comments humanize %}
+{% get_comment_count for post as comment_count %}
+{% get_comment_list for post as comment_list %}
+{% get_comment_form for post as comment_form %}
+
+<div id="comments">
+<h2>{% ifequal comment_count 0 %}{% else %}{{ comment_count|apnumber }}{% endifequal %} Comment{{comment_count|pluralize}}</h2>
+{% for comment in comment_list %}
+
+{% get_comment_permalink comment "#comment%(id)s"%}
+#comment{{ comment.id }}
+{% endfor %}
+
+<div id="commentform">{% spaceless %}
+    <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+      {% for field in comment_form %}
+        {% if field.is_hidden %}
+          {{ field }}
+        {% else %}
+          {% if field.errors %}{{ field.errors }}{% endif %}
+          <p
+            {% if field.errors %} class="error"{% endif %}
+            {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+            {{ field.label_tag }} {{ field }}
+          </p>
+        {% endif %}
+      {% endfor %}
+      <p class="submit">
+        <input type="submit" name="post" class="submit-post" value="Post" />
+        <input type="submit" name="preview" class="submit-preview" value="Preview" />
+      </p>
+    </form>
+{% endspaceless %}</div>
+</div>
+

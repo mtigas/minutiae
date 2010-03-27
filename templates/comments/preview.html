@@ -1,0 +1,38 @@
+{% extends 'flatpages/default.html' %}
+{% load comments %}
+
+{% block title %}Preview your comment - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="flatpage">
+    <div class="content">
+        <div id="commentform">{% spaceless %}
+            <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+              {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+            {% if form.errors %}
+            <h2>Please correct the error{{ form.errors|length|pluralize }} below</h2>
+            {% else %}
+            <h2>Preview your comment</h2>
+              <blockquote>{{ comment|linebreaks }}</blockquote>
+            {% endif %}
+              {% for field in form %}
+                {% if field.is_hidden %}
+                  {{ field }}
+                {% else %}
+                  {% if field.errors %}{{ field.errors }}{% endif %}
+                  <p
+                    {% if field.errors %} class="error"{% endif %}
+                    {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+                    {{ field.label_tag }} {{ field }}
+                  </p>
+                {% endif %}
+              {% endfor %}
+              <p class="submit">
+                <input type="submit" name="post" class="submit-post" value="Post" />
+                <input type="submit" name="preview" class="submit-preview" value="Preview" />
+              </p>
+            </form>
+        {% endspaceless %}</div>
+    </div>
+</div>
+{% endblock %}

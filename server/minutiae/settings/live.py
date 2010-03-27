@@ -43,6 +43,7 @@ MIDDLEWARE_CLASSES = (
 # EMAIL_HOST_USER 
 # EMAIL_HOST_PASSWORD
 # SECRET_KEY
+# AKISMET_API_KEY
 try:
     from secret_settings import *
 except:

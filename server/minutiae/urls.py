@@ -22,6 +22,10 @@ urlpatterns = patterns('',
     (r'^colophon/$', 'django.views.generic.simple.direct_to_template', { 'template':'colophon.html' }),
     (r'^portfolio/$', 'django.views.generic.simple.direct_to_template', { 'template':'portfolio.html' }),
     
+    # Comments backend
+    url(r'^comments/cr/(\d+)/(.+)/$', 'minutiae.views.shortcut', name='comments-url-redirect'),
+    (r'^comments/', include('django.contrib.comments.urls')),
+    
     # Feed framework
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': {
         'blog':BlogFeed

@@ -1,0 +1,13 @@
+{% extends 'flatpages/default.html' %}
+{% block title %}Thanks for commenting - {{ block.super }}{% endblock %}
+
+
+{% block content %}
+<div class="flatpage">
+    <div class="content">
+        <h2>Comment Posted</h2>
+        <p>Your comment has been submitted. Comments are moderated against <a href="http://akismet.com/">Akismet</a>, so your comment may not appear right away.</p>
+        <p>You can now return to the <a href="{{ comment.get_content_object_url }}">post you were reading</a>.</p>
+    </div>
+</div>
+{% endblock %}

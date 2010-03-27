@@ -1,5 +1,6 @@
 from django.views.generic import date_based,list_detail
 from django.views.generic.simple import direct_to_template,redirect_to
+from django.views.decorators.csrf import csrf_protect
 from django.http import HttpResponse,Http404
 from django.core import serializers
 from django.core.urlresolvers import reverse,NoReverseMatch
@@ -98,6 +99,7 @@ def short_redir(request,post_id):
         post.get_absolute_url()
     )
 
+@csrf_protect
 def post(request,year,month,day,slug):
     redirect = double_digit_checker(request,year,month,day)
     if redirect:

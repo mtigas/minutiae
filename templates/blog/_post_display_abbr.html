@@ -1,4 +1,5 @@
-{% load typogrify %}
+{# not using this template at the moment #}
+{% load typogrify comments %}
 <div class="post" id="post-{{ post.id }}">
 
     <h2 style="margin-bottom:0"><a href="{{ post.get_absolute_url }}">{% if post.title %}{{ post.title|typogrify }}{% else %}Untitled{% endif %}</a>{% if not post.is_live %}*{% endif %}</h2>

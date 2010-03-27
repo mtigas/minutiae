@@ -36,8 +36,10 @@ USE_I18N = False
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.comments',
     'django.contrib.contenttypes',
     #'django.contrib.flatpages',
+    'django.contrib.humanize',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sitemaps',
@@ -86,3 +88,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.contrib.messages.context_processors.messages"
 )
+
+# ===== Comments =====
+COMMENT_MAX_LENGTH = 15000

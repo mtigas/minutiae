@@ -1,6 +1,9 @@
 from django.db import models
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
+from django.contrib.comments.moderation import CommentModerator, moderator
+
 from datetime import datetime
 
 class PostCategory(models.Model):
@@ -70,3 +73,48 @@ class BlogPost(models.Model):
                 'day'  : self.pubdate.strftime('%d'),
                 'slug' : self.slug
             })
+
+
+class BlogCommentModerator(CommentModerator):
+    email_notification = True
+    
+    def check_spam(self, request, comment, key, blog_url=None, base_url=None):
+        try:
+            from akismet import Akismet
+        except:
+            return False
+        
+        if blog_url is None:
+            blog_url = 'http://%s/' % Site.objects.get_current().domain
+        
+        ak = Akismet(
+            key=settings.AKISMET_API_KEY,
+            blog_url=blog_url
+        )
+        
+        if base_url is not None:
+            ak.baseurl = base_url
+                
+        if ak.verify_key():
+            data = {
+                'user_ip': request.META.get('REMOTE_ADDR', '127.0.0.1'),
+                'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+                'referrer': request.META.get('HTTP_REFERER', ''),
+                'comment_type': 'comment',
+                'comment_author': comment.user_name.encode('utf-8'),
+                'comment_author_email': comment.userinfo['email'],
+                'comment_author_url': comment.userinfo['url']
+            }
+            
+            if ak.comment_check(comment.comment.encode('utf-8'), data=data, build_data=True):
+                return True
+        return False
+    
+    def moderate(self, comment, content_object, request):
+        moderate = super(BlogCommentModerator, self).moderate(comment, content_object, request)
+                
+        return moderate or self.check_spam(request, comment,
+            key=settings.AKISMET_API_KEY,
+        )
+
+moderator.register(BlogPost, BlogCommentModerator)

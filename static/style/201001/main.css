@@ -211,6 +211,10 @@ h2 {
     font-size:.85em;
     margin-bottom:1em
 }
+#comments h2 {
+    color: #555;
+    font-size:1.7em;
+}
 sup {
 	line-height:0;
 }
