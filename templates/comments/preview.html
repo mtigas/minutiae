@@ -1,5 +1,5 @@
 {% extends 'flatpages/default.html' %}
-{% load comments %}
+{% load comments gravatar %}
 
 {% block title %}Preview your comment - {{ block.super }}{% endblock %}
 
@@ -13,7 +13,13 @@
             <h2>Please correct the error{{ form.errors|length|pluralize }} below</h2>
             {% else %}
             <h2>Preview your comment</h2>
-              <blockquote>{{ comment|linebreaks }}</blockquote>
+
+<div class="comment">
+    <div class="comment-content">
+        {{ comment|striptags|linebreaks }}
+        <br class="clear"/>
+    </div>
+</div>
             {% endif %}
               {% for field in form %}
                 {% if field.is_hidden %}
