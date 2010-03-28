@@ -30,6 +30,7 @@ class BlogPost(models.Model):
     body = models.TextField()
     pubdate = models.DateTimeField(default=datetime.now)
     is_live = models.BooleanField(default=False)
+    enable_comments = models.BooleanField(default=False)
     
     class Meta:
         get_latest_by = 'pubdate'
@@ -77,6 +78,7 @@ class BlogPost(models.Model):
 
 class BlogCommentModerator(CommentModerator):
     email_notification = True
+    enable_field = 'enable_comments'
     
     def check_spam(self, request, comment, key, blog_url=None, base_url=None):
         try:

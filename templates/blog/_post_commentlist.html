@@ -1,35 +1,68 @@
-{% load comments humanize %}
+{% load comments humanize gravatar %}
 {% get_comment_count for post as comment_count %}
 {% get_comment_list for post as comment_list %}
 {% get_comment_form for post as comment_form %}
 
 <div id="comments">
-<h2>{% ifequal comment_count 0 %}{% else %}{{ comment_count|apnumber }}{% endifequal %} Comment{{comment_count|pluralize}}</h2>
+<h2>{% if post.enable_comments %}
+    {% ifnotequal comment_count 0 %}{{ comment_count|apnumber }}{% else %}No{% endifnotequal %} Comment{{comment_count|pluralize}}
+    {% else %}
+        {% ifequal comment_count 0 %}
+        Comments Disabled
+        {% else %}
+        {{ comment_count|apnumber }} Comment{{comment_count|pluralize}}
+        {% endifequal %}
+    {% endif %}
+</h2>
+
 {% for comment in comment_list %}
+<div class="comment" id="comment{{comment.id}}">
+    <div class="comment-content">
+        <p class="gravatar">
+            <a href="{% get_comment_permalink comment "#comment%(id)s"%}">
+                <img src="{% gravatar comment.user_email 40 r %}" alt="Gravatar for {{ comment.user_name }}"/>
+            </a>
+        </p>
+        {{ comment.comment|striptags|linebreaks }}
+        <br class="clear"/>
+    </div>
+    <div class="comment-byline">
+        &mdash;
+        {% if comment.user_url %}<a href="{{ comment.user_url }}">{% endif %}
+        <cite>{{ comment.user_name }}</cite>
+        {% if comment.user_url %}</a>{% endif %} on 
+        <a href="{% get_comment_permalink comment "#comment%(id)s"%}">{{ comment.submit_date|date:"F j, Y" }}</a>
+    </div>
+</div>{% endfor %}
 
-{% get_comment_permalink comment "#comment%(id)s"%}
-#comment{{ comment.id }}
-{% endfor %}
+{% if not post.enable_comments %}
+    <p style="line-height: 1.6em;{% ifnotequal comment_count 0 %}border-top:1px solid #ddd;padding-top:2em{% endifnotequal %}">Comments on this post are currently disabled. If you&rsquo;ve got something to say, however, feel free to <a href="/contact/">send those thoughts my way</a>.</p>
+{% endif %}
 
-<div id="commentform">{% spaceless %}
+{% if post.enable_comments %}
+<div id="commentform"{% ifnotequal comment_count 0 %} style="border-top:1px solid #ddd"{% endifnotequal %}>{% spaceless %}
+<h3>Add your two cents:</h3>
     <form action="{% comment_form_target %}" method="post">{% csrf_token %}
       {% for field in comment_form %}
         {% if field.is_hidden %}
           {{ field }}
         {% else %}
           {% if field.errors %}{{ field.errors }}{% endif %}
-          <p
-            {% if field.errors %} class="error"{% endif %}
+          <p{% if field.errors %} class="error"{% endif %}
             {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-            {{ field.label_tag }} {{ field }}
+            {{ field.label_tag }}<br />
+            {{ field }}
           </p>
         {% endif %}
       {% endfor %}
+      <p>No HTML allowed.</p>
+      <p>Automatic avatars via <a href="http://gravatar.com/" rel="nofollow">Gravatar</a>.</p>
       <p class="submit">
         <input type="submit" name="post" class="submit-post" value="Post" />
         <input type="submit" name="preview" class="submit-preview" value="Preview" />
       </p>
     </form>
 {% endspaceless %}</div>
+{% endif %}
 </div>
 

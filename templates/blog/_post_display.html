@@ -9,7 +9,15 @@
     <div class="meta">
         {% include 'blog/bits/post_metadate.html' %} &bull; 
         <a href="{{ post.get_absolute_url }}">permalink</a> &bull; 
-        {% if not detail_page %}<a href="{{ post.get_absolute_url }}#comments">{{ comment_count }} comment{{comment_count|pluralize}}</a> &bull;{% endif %}
+        {% if not detail_page %}
+            {% if post.enable_comments %}
+                <a href="{{ post.get_absolute_url }}#comments">{{ comment_count }} comment{{comment_count|pluralize}}</a> &bull;
+            {% else %}
+                {% ifnotequal comment_count 0 %}
+                <a href="{{ post.get_absolute_url }}#comments">{{ comment_count }} comment{{comment_count|pluralize}}</a> &bull;
+                {% endifnotequal %}
+            {% endif %}
+        {% endif %}
         {% with post.absolute_uri as absolute_uri %}
         {% include 'blog/bits/post_share.html' %}
         {% endwith %}

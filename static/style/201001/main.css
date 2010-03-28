@@ -215,6 +215,45 @@ h2 {
     color: #555;
     font-size:1.7em;
 }
+#comments {
+    border-top:1px solid #ccc;
+    padding-top:2em;
+    margin-bottom:2em;
+}
+.comment {
+    width:450px;
+    margin:1em auto;
+}
+.comment-content {
+    line-height:1.3em;
+    padding:5px;
+    background: #f3f3f3;
+    border-radius:10px;
+}
+.comment-content p {
+    margin:.5em;
+}
+.comment-content p.gravatar {
+    float:right;
+}
+.comment-byline {
+    margin:.5em 0 2em 2em;
+}
+.comment-byline a {
+    border-bottom: none;
+}
+#commentform {
+    width:300px;
+    margin:0 auto;
+}
+#commentform input[type=text], #commentform textarea {
+    width:300px;
+    border: 1px solid #888;
+    background:#eee;
+}
+#commentform input[type=text]:focus, #commentform textarea:focus {
+    background:#f6f6f6;
+}
 sup {
 	line-height:0;
 }
