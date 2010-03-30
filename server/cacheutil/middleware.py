@@ -19,14 +19,13 @@ class NginxMemcacheMiddleWare(object):
         
         # A few conditions that cause us not to cache.
         if request.method != "GET" \
-          or not response.status_code == 200:
+          or not response.status_code == 200 \
+          or (response.has_header("Pragma") and ("no-cache" in response['Pragma'])) \
+          or (anon_only and request.user.is_authenticated()):
             return response
         
         # The cache key prefix (should match what is in the site's nginx config)
         prefix = getattr(settings,"NGINX_CACHE_PREFIX","NG")
-        
-        if response.has_header("Pragma") and ("no-cache" in response['Pragma']):
-            return response
         
         # See the value of max-age and set timer on that. If not set,
         # use CACHE_MIDDLEWARE_SECONDS. If 0, do not cache.
