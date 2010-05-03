@@ -1,4 +1,3 @@
-from django.db.models.loading import get_model
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.core.urlresolvers import reverse,NoReverseMatch
@@ -15,7 +14,7 @@ def sections(request):
     for order,slug in enumerate(SECTIONS_ORDER):
         section = SECTIONS[slug]
         
-        Model = get_model('mobile',section['proxy_model'])
+        Model = section['proxy_model']
         qs = Model._default_manager.all()
         print section['filters']
         if section['filters']:
@@ -79,7 +78,7 @@ def section_detail(request,slug='',page=1):
     
     section = SECTIONS[slug]
     
-    Model = get_model('mobile',section['proxy_model'])
+    Model = section['proxy_model']
     qs = Model._default_manager.all()
     if section['filters']:
         qs = qs.filter(**section['filters'])

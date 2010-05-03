@@ -2,33 +2,6 @@ from django.db import models
 from minutiae.blog.models import BlogPost
 from datetime import datetime
 
-SECTIONS_ORDER = (
-    'main',
-    #'secondary'
-)
-SECTIONS = {
-    'main': {
-        'slug':'main',
-        'name':'Main Content',
-        'filters':{
-            'is_live__exact':True,
-            'pubdate__lte':datetime.now
-        },
-        'excludes':{},
-        'proxy_model':'MobileBlogPost'
-    },
-    #'secondary': {
-    #    'slug':'secondary',
-    #    'name':'Secondary Content',
-    #    'filters':{
-    #        'is_live__exact':True,
-    #        'pubdate__lte':datetime.now
-    #    },
-    #    'excludes':{},
-    #    'proxy_model':'MobileBlogPost'
-    #},
-}
-
 class MobileBlogPost(BlogPost):
     class Meta:
         proxy = True
@@ -50,3 +23,31 @@ class MobileBlogPost(BlogPost):
     
     def get_mobile_teaser_video(self):
         return None
+
+
+SECTIONS_ORDER = (
+    'main',
+    #'secondary'
+)
+SECTIONS = {
+    'main': {
+        'slug':'main',
+        'name':'Main Content',
+        'filters':{
+            'is_live__exact':True,
+            'pubdate__lte':datetime.now
+        },
+        'excludes':{},
+        'proxy_model':MobileBlogPost
+    },
+    #'secondary': {
+    #    'slug':'secondary',
+    #    'name':'Secondary Content',
+    #    'filters':{
+    #        'is_live__exact':True,
+    #        'pubdate__lte':datetime.now
+    #    },
+    #    'excludes':{},
+    #    'proxy_model':'MobileBlogPost'
+    #},
+}
