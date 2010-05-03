@@ -1,3 +1,45 @@
 from django.db import models
+from minutiae.blog.models import BlogPost
 
-# Create your models here.
+SECTIONS_ORDER = (
+    'main',
+    'secondary'
+)
+SECTIONS = {
+    'main': {
+        'slug':'main',
+        'name':'Main Content',
+        'filters':(),
+        'excludes':(),
+        'proxy_model':'MobileBlogPost'
+    },
+    'secondary': {
+        'slug':'secondary',
+        'name':'Secondary Content',
+        'filters':(),
+        'excludes':(),
+        'proxy_model':'MobileBlogPost'
+    },
+}
+
+class MobileBlogPost(BlogPost):
+    class Meta:
+        proxy = True
+    
+    def get_mobile_text(self):
+        return self.body
+    
+    def get_mobile_photos(self):
+        return None
+    
+    def get_mobile_videos(self):
+        return None
+        
+    def get_mobile_teaser_text(self):
+        return self.body
+    
+    def get_mobile_teaser_photo(self):
+        return None
+    
+    def get_mobile_teaser_video(self):
+        return None
