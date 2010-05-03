@@ -13,7 +13,7 @@ urlpatterns = patterns('',
         name = 'section_detail_redir'
     ),
     url(
-        regex = r'^(?P<slug>[-\w]+)/(?P<page>\d+)/$',
+        regex = r'^(?P<slug>[-\w]+)/(?P<page_num>\d+)/$',
         view = views.section_detail,
         name = 'section_detail'
     ),
