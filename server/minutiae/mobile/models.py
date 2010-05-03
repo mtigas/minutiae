@@ -1,25 +1,32 @@
 from django.db import models
 from minutiae.blog.models import BlogPost
+from datetime import datetime
 
 SECTIONS_ORDER = (
     'main',
-    'secondary'
+    #'secondary'
 )
 SECTIONS = {
     'main': {
         'slug':'main',
         'name':'Main Content',
-        'filters':(),
-        'excludes':(),
+        'filters':{
+            'is_live__exact':True,
+            'pubdate__lte':datetime.now
+        },
+        'excludes':{},
         'proxy_model':'MobileBlogPost'
     },
-    'secondary': {
-        'slug':'secondary',
-        'name':'Secondary Content',
-        'filters':(),
-        'excludes':(),
-        'proxy_model':'MobileBlogPost'
-    },
+    #'secondary': {
+    #    'slug':'secondary',
+    #    'name':'Secondary Content',
+    #    'filters':{
+    #        'is_live__exact':True,
+    #        'pubdate__lte':datetime.now
+    #    },
+    #    'excludes':{},
+    #    'proxy_model':'MobileBlogPost'
+    #},
 }
 
 class MobileBlogPost(BlogPost):
