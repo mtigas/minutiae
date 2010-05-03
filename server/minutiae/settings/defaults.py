@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'typogrify',
 
     'minutiae.blog',
+    'minutiae.mobile',
 )
 
 ROOT_URLCONF = 'minutiae.urls'
