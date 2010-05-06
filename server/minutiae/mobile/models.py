@@ -27,7 +27,6 @@ class MobileBlogPost(BlogPost):
 
 SECTIONS_ORDER = (
     'main',
-    #'secondary'
 )
 SECTIONS = {
     'main': {
@@ -40,14 +39,4 @@ SECTIONS = {
         'excludes':{},
         'proxy_model':MobileBlogPost
     },
-    #'secondary': {
-    #    'slug':'secondary',
-    #    'name':'Secondary Content',
-    #    'filters':{
-    #        'is_live__exact':True,
-    #        'pubdate__lte':datetime.now
-    #    },
-    #    'excludes':{},
-    #    'proxy_model':'MobileBlogPost'
-    #},
 }

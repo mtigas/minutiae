@@ -46,9 +46,6 @@ def sections(request):
         mimetype="text/plain;charset=utf-8"
     )
     
-    #from django.db import connection
-    #print "%s queries" % len(connection.queries)
-    
     return response
 
 def section_detail_redir(request,slug=''):
@@ -119,12 +116,9 @@ def section_detail(request,slug='',page_num=1):
         content=json.dumps(
             data,
             ensure_ascii=False,
-            indent=2,
+            #indent=2,
         ),
         mimetype="text/plain;charset=utf-8"
     )
-    
-    #from django.db import connection
-    #print "%s queries" % len(connection.queries)
     
     return response
