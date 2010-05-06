@@ -323,3 +323,12 @@ a:hover img, img.hoverimg:hover {
 .imgblock_r {
     margin-right: 0;
 }
+div.hr.secbreak hr {
+    display:none;
+}
+div.hr.secbreak:after {
+    display: block;
+    text-align:center;
+    margin:1em auto;
+    content:"\2022\00A0\2022\00A0\2022";
+}
