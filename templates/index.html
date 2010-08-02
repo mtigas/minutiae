@@ -1,12 +1,83 @@
-{% extends '_base.html' %}
+{% extends 'flatpages/default.html' %}
+
+{% block title %}Mike Tigas{% endblock %}
+{% block meta_description %}Website of Mike Tigas, Web developer.{% endblock %}
+
+{% block h1 %}<a href="/">Mike Tigas</a>{% endblock %}
+{% block tagline %}Web developer. Photographer. Caffeine addict.{% endblock %}
 
 {% block content %}
-        <div class="flatpage">
-            <div style="margin:4em 0">
-                <h2><a href="/blog/">Blog</a></h2>
-                <h2 style="margin-top:2em"><a href="/about/">Bio</a></h2>
-                <h2><a href="/portfolio/">Portfolio</a></h2>
-                <h2><a href="/contact/">Contact</a></h2>
-            </div>
+<style type="text/css">
+.social_links {
+    margin:0 8px;
+    padding:0;
+    list-style-type: none;
+    display:inline
+}
+.social_links li { margin-top:0; margin-bottom: 0; display:inline }
+.social_links a { border:none; }
+.social_links li img {
+    border:none;
+    vertical-align:text-bottom;
+    -webkit-transition-property:none;
+    -moz-transition-property:none;
+    transition-property:none;
+	opacity:1 !important;
+	filter: alpha(opacity = 100);
+}
+</style>
+
+<div class="flatpage">
+
+    <div style="float:left;width:220px">
+        <h2><a href="/blog/">Blog</a></h2>
+        <h2><a href="http://misc.miketigas.com/">Tumblelog</a></h2>
+        <h2><a href="/about/">Bio</a></h2>
+        <h2><a href="/portfolio/">Portfolio</a></h2>
+        <h2><a href="/contact/">Contact</a></h2>
+    </div>
+
+
+    <div style="float:left;padding:0 15px">
+        <p style="width:250px"><strong><a href="/about/">Mike Tigas</a></strong> is a Web developer and mobile applications developer with experience in the media industry. He lives in Spokane, Washington.</p>
+        <p style="width:250px"><a href="/portfolio/">Projects</a> include Django applications, iPhone applications, GIS/Google Maps mashups, and general badassery.</p>
+        <p style="width:250px">He has an online presence pretty much everywhere you&#x2019;d expect:</p>
+
+        <div style="margin:0 auto;text-align:center">
+            <ul class="social_links">
+            <li><a href="https://www.facebook.com/mike.tigas"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/facebook_16.png" alt="Facebook" /></a></li>
+            <li><a href="https://twitter.com/mtigas"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/twitter_16.png" alt="Twitter" /></a></li>
+            <li><a href="http://www.google.com/profiles/mike.tigas"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/google_16.png" alt="Google" /></a></li>
+            </ul>
+    
+            <ul class="social_links">
+            <li><a href="https://github.com/mtigas"><img src="http://media1.mike.tig.as/files/20100129/github.png" alt="GitHub" /></a></li>
+            <li><a href="http://www.linkedin.com/in/mtigas"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/linkedin_16.png" alt="LinkedIn" /></a></li>
+            </ul>
+            <br />
+            <ul class="social_links">
+            <li><a href="http://delicious.com/mtigas/"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/delicious_16.png" alt="Delicious" /></a></li>
+            <li><a href="http://www.flickr.com/photos/madmannova/"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/flickr_16.png" alt="Flickr" /></a></li>
+            <li><a href="http://news.ycombinator.com/user?id=mtigas"><img src="http://media1.mike.tig.as/files/20100725/hn.gif" style="width:18px;height:18px" alt="Hacker News" /></a></li>
+            <li><a href="http://www.hulu.com/profiles/mtigas"><img src="http://media1.mike.tig.as/files/20100129/hulu2.png" alt="Hulu" /></a></li>
+            <li><a href="http://www.last.fm/user/MadmanNova"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/lastfm_16.png" alt="Last.fm" /></a></li>
+            <li><a href="http://readernaut.com/mtigas/"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/readernaut_16.png" alt="Readernaut" /></a></li>
+            <li><a href="http://www.reddit.com/user/mtigas/"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/reddit_16.png" alt="Reddit" /></a></li>
+            <li><a href="http://steamcommunity.com/id/cmdrnova"><img src="http://media1.mike.tig.as/files/20100129/steam.png" alt="Steam" /></a></li>
+            <li><a href="http://misc.miketigas.com/"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/tumblr_16.png" alt="Tumblr" /></a></li>
+            <li><a href="http://www.youtube.com/user/MadmanNova"><img src="http://media1.mike.tig.as/files/20100101/social_networking_iconpack/youtube_16.png" alt="YouTube" /></a></li>
+            </ul>
         </div>
+    </div>
+    
+    <br class="clear"/>
+
+
+
+</div> <!-- flatpage -->
+{% endblock %}
+
+{% block footerdiv %}
+        <p>Powered by <a href="http://www.djangoproject.com/">Django</a>. <a href="/colophon/" title="Colophon">See the colophon</a> and <a href="http://github.com/mtigas/minutiae">the source code</a>.</p>
+        <p>&#169; 2001&ndash;{% now "Y" %} Mike Tigas, <a href="/colophon/#license">all rights reserved &mdash; see license for details</a>.</p>
 {% endblock %}

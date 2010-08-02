@@ -8,10 +8,11 @@ from minutiae.custom_contact_form import CustomRecipientContactForm
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', 'django.views.generic.simple.redirect_to', {
-        'url':'/blog/',
-        'permanent': True
-    }),
+    url(r'^$',
+        'django.views.generic.simple.direct_to_template', {
+            'template': 'index.html'
+        }
+    ),
     
     # Blog & blog shorturl
     (r'^blog/', include('minutiae.blog.urls', namespace="blog", app_name="blog")),
