@@ -16,9 +16,10 @@ git gc --aggressive
 ./update_dependencies.sh
 
 touch wsgi.py
+sudo stop uwsgi_miketigas
 sudo service nginx restart
-sudo service apache2 restart
 sudo service memcached restart
+sudo start uwsgi_miketigas
 find . -name \"*.pyc\" -delete
 find . -name \"*.pyo\" -delete
 "
