@@ -10,30 +10,78 @@
 {% block headextra %}
 <script type="text/javascript">
     jQuery(function() {
-        jQuery(".portfolio-teaser").css('cursor','pointer').each(function() {
-            var teaser_id = this.id;
-            var portfolio_id = teaser_id.replace('teaser-','');
+        var currentSlide = 0;
+        var slides = jQuery("#portfolio-slider .portfolio-item");
+        var numSlides = slides.length;
 
-            jQuery(this).click(function() {
-                jQuery('html, body').animate({
-                    scrollTop: jQuery("#"+portfolio_id).offset().top
-                }, 400);
-                return false;
+        /*
+        jQuery("#portfolio-prev a").click(function() {return false;});
+        jQuery("#portfolio-next a").click(function() {return false;});
+        */
+        
+        var updateNav = function(slideIndex){
+            if(slideIndex==0)  { jQuery('#portfolio-prev').hide(); }
+            else { jQuery('#portfolio-prev').show(); }
+            if(slideIndex==numSlides-1) {  jQuery('#portfolio-next').hide(); }
+            else { jQuery('#portfolio-next').show(); }
+            
+            //jQuery("#portfolio-slider").children().first().css('margin-top',''+(-510*currentSlide)+'px');
+            
+            jQuery("#portfolio-slider").children().first().animate({
+                marginTop: -515*(currentSlide)
             });
+            
+        };
+        updateNav(0);
+        
+        jQuery("#portfolio-prev a").click(function() {
+            currentSlide = currentSlide-1;
+            updateNav(currentSlide);
+            return false;
         });
+        jQuery("#portfolio-next a").click(function() {
+            currentSlide = currentSlide+1;
+            updateNav(currentSlide);
+            return false;
+        });
+        
+        jQuery("#portfolio-slider").css('overflow','hidden');
     });
 </script>
 <style type="text/css">
-    .portfolio-teaser img {
-        vertical-align: middle;
-        margin: 5px;
+    #portfolio-prev {
+        float:left;
+    }
+    #portfolio-next {
+        float:right;
+    }
+    #portfolio-slider {
+        width:510px;
+        height:505px;
+        overflow:auto;
+        position:relative;
+        margin:0;
+        padding:0;
     }
     .portfolio-item {
-        margin:4em 0
+        width:505px;
+        height:500px;
+        overflow:hidden;
+        margin:0 0 15px 0;
+        padding:0;
+    }
+    .portfolio-item h2 {
+        margin:0 0 10px 0;
+    }
+    .portfolio-item p{
+        text-align:center;
+        margin:0 auto;
     }
     .portfolio-item ul, .portfolio-item ul li {
         list-style-position:outside;
         list-style-type:none;
+        margin-top:0;
+        padding-top:0;
         margin-left: 0;
         padding-left: 0;
     }
@@ -51,70 +99,63 @@
 <div class="flatpage" id="flatpage-portfolio">
         <p>This is an overview of some of the projects I&rsquo;ve worked on. For a more general overview of what I do, <a href="/about/">check out my bio</a>.</p>
         <hr />
-        <div style="margin:2em 0">
-            <h2>Projects</h2>
-            <p style="text-align:center">
-                <a class="portfolio-teaser" id="teaser-komunews" href="#komunews"><img src="http://media1.mike.tig.as/files/20100129/komu.jpg" alt="KOMU News iPhone App" width="150"/></a>
-                <a class="portfolio-teaser" id="teaser-mmpr" href="#mmpr"><img src="http://media3.mike.tig.as/style/201001/images/mmpr-500.png" alt="Mighty Morphin Power Rangers" width="150"/></a>
-                <a class="portfolio-teaser" id="teaser-mw2" href="#mw2"><img src="http://media3.mike.tig.as/style/201001/images/mw2-sm.png" alt="Modern Warfare 2" width="150"/></a>
-                <a class="portfolio-teaser" id="teaser-spokesman" href="#spokesman"><img src="http://media1.mike.tig.as/files/20090213/spokesman6.png" alt="The Spokesman-Review" width="150"/></a>
-                <a class="portfolio-teaser" id="teaser-maneater" href="#maneater"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper" width="150"/></a>
-                <a class="portfolio-teaser" id="teaser-nna" href="#nna"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association" width="150"/></a></p> 
-        </div>
-        <hr />
-        <div class="portfolio-item" id="komunews">
-            <h2>KOMU News iPhone App</h2>
-            <ul>
-                <li>September 2009&ndash;May 2010</li>
-                <li>Objective-C development, PHP-based middleware development</li>
-            </ul>
-            <p><a href="http://www.komu.com/"><img src="http://media1.mike.tig.as/files/20100129/komu.jpg" alt="KOMU News iPhone App" width="500"/></a></p>
-        </div>
-        <div class="portfolio-item" id="mmpr">
-            <h2>Mighty Morphin Power Rangers</h2>
-            <ul>
-                <li>December 2009&ndash;January 2010</li>
-                <li>PHP backend development<ul><li>custom CMS admin panel, storefront management system</li></ul></li>
-            </ul>
-            <p><a href="http://www.bandai.com/powerrangers/mmpr/"><img src="http://media3.mike.tig.as/style/201001/images/mmpr-500.png" alt="Mighty Morphin Power Rangers" width="500"/></a></p>
-        </div>
-        <div class="portfolio-item" id="mw2">
-            <h2>Call of Duty: Modern Warfare 2</h2>
-            <ul>
-                <li>August 2009&ndash;November 2009</li>
-                <li>PHP backend development<ul><li>CMS customizations, internationalization backend, social network API integration</li></ul></li>
-            </ul>
-            <p><a href="http://modernwarfare2.infinityward.com/"><img src="http://media3.mike.tig.as/style/201001/images/mw2-sm.png" alt="Modern Warfare 2" width="500"/></a></p>
-        </div>
-        <div class="portfolio-item" id="spokesman">
-            <h2>The Spokesman-Review</h2>
-            <ul>
-                <li>2008&ndash;Present</li>
-                <li>Django/Python backend development<ul><li>data modeling, custom full-text search backend, <a href="http://www.opencalais.com/">Reuters OpenCalais</a> integration, GIS (geolocation, mapping) development, dynamic (jQuery/AJAX) user interface development</li></ul></li>
-            </ul>
-            <p><a href="http://www.spokesman.com/"><img src="http://media1.mike.tig.as/files/20090213/spokesman6.png" alt="The Spokesman-Review" width="500"/></a></p> 
-        </div>
-        <div class="portfolio-item" id="maneater">
-            <h2>The Maneater Student Newspaper</h2>
-            <ul>
-                <li>2005&ndash;2008</li>
-                <li>Online Editor (2006-2007), Asst. Online Editor (2007-2008)
-                    <ul><li>Managed content updates, including breaking news. Maintained PHP-powered Web site from 2006-2007. Developed and deployed <a href="/2008/02/10/themaneatercom-launch/">new Django-powered Web site</a> in early 2008. Implemented, produced, and managed initial multimedia offerings including podcasts.</li></ul>
-                </li>
-            </ul>
-            <p><a href="http://www.themaneater.com/"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper" width="500"/></a></p> 
-        </div>
-        <div class="portfolio-item" id="nna">
-            <h2>The National Newspaper Association</h2>
-            <ul>
-                <li>2007</li>
-                <li>PHP frontend/backend development
-                    <ul><li>Designed and integrated a complete Web site overhaul from aged, proprietary CMS into a Wordpress-powered backend.</li></ul>
-                </li>
-            </ul>
-            <p><a href="http://www.nna.org/"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association" width="500"/></a></p> 
-        </div>
-    </div>
+        
+        <div id="portfolio-prev"><a href="#">&laquo;&nbsp;Previous Project</a></div>
+        <div id="portfolio-next"><a href="#">Next Project&nbsp;&raquo;</a></div>
+        <br class="clear" style="margin-bottom:1em"/>
 
-</div>
+        <div id="portfolio-slider">
+            <div class="portfolio-item" id="komunews">
+                <h2>KOMU News for iPhone</h2>
+                <p><a href="http://www.komu.com/"><img src="http://media1.mike.tig.as/files/20100129/komu.jpg" alt="KOMU News iPhone App" width="500"/></a></p>
+                <div class="description">
+                    <ul>
+                        <li>Winter 2009: Objective-C development, PHP middleware development</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portfolio-item" id="mmpr">
+                <h2>Mighty Morphin Power Rangers</h2>
+                <p><a href="http://www.bandai.com/powerrangers/mmpr/"><img src="http://media3.mike.tig.as/style/201001/images/mmpr-500.png" alt="Mighty Morphin Power Rangers" width="500"/></a></p>
+                <div class="description">
+                    <ul>
+                        <li>Winter 2009: PHP backend development<ul><li>custom CMS admin panel, storefront management system</li></ul></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portfolio-item" id="mw2">
+                <h2>Call of Duty: Modern Warfare 2</h2>
+                <p><a href="http://modernwarfare2.infinityward.com/"><img src="http://media1.mike.tig.as/files/20100802/mw2-1000.png" alt="Modern Warfare 2" width="500"/></a></p>
+                <ul>
+                    <li>Fall 2009: PHP backend development<ul><li>CMS customizations, internationalization backend, social network API integration</li></ul></li>
+                </ul>
+            </div>
+            <div class="portfolio-item" id="spokesman">
+                <h2>Spokesman.com</h2>
+                <p><a href="http://www.spokesman.com/"><img src="http://media1.mike.tig.as/files/20100802/spokesman-1000b.png" alt="The Spokesman-Review" width="500"/></a></p> 
+                <ul>
+                    <li>2008-Present: Django/Python backend development<ul><li>data modeling, custom full-text search backend, <a href="http://www.opencalais.com/">Reuters OpenCalais</a> integration, GIS (geolocation, mapping) development, dynamic (jQuery/AJAX) user interface development</li></ul></li>
+                </ul>
+            </div>
+            <div class="portfolio-item" id="maneater">
+                <h2>The Maneater Student Newspaper</h2>
+                <p><a href="http://www.themaneater.com/"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper" width="500"/></a></p> 
+                <ul>
+                    <li>2006-2007: Online Editor / 2007-2008: Asst. Online Editor
+                        <ul><li>Managed content updates, including breaking news. Maintained PHP-powered Web site from 2006-2007. Developed and deployed <a href="/2008/02/10/themaneatercom-launch/">new Django-powered Web site</a> in early 2008. Implemented, produced, and managed initial multimedia offerings including podcasts.</li></ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="portfolio-item" id="nna">
+                <h2>The National Newspaper Association</h2>
+                <p><a href="http://www.nna.org/"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association" width="500"/></a></p> 
+                <ul>
+                    <li>2007: PHP frontend/backend development
+                        <ul><li>Designed and integrated a complete Web site overhaul from aged, proprietary CMS into a Wordpress-powered backend.</li></ul>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- portfolio-slider -->
+        
+</div><!-- flatpage -->
 {% endblock %}
