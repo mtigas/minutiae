@@ -14,6 +14,10 @@
         var slides = jQuery("#portfolio-slider .portfolio-item");
         var numSlides = slides.length;
 
+        jQuery("#portfolio-nav").css('display','block');
+        jQuery("#portfolio-box").css('width','505px').css('height','410px').css('overflow','hidden');
+        jQuery("#portfolio-slider").css('width',''+numSlides*510+'px');
+        jQuery(".portfolio-item").css('float','left');
         /*
         jQuery("#portfolio-prev a").click(function() {return false;});
         jQuery("#portfolio-next a").click(function() {return false;});
@@ -25,12 +29,19 @@
             if(slideIndex==numSlides-1) {  jQuery('#portfolio-next').hide(); }
             else { jQuery('#portfolio-next').show(); }
             
-            //jQuery("#portfolio-slider").children().first().css('margin-top',''+(-510*currentSlide)+'px');
+            var txt = "";
+            for (var i=0;i<slideIndex;i++) {
+                txt += "&bull;";
+            }
+            txt += '<span style="font-size:1.5em">&bull;</span>';
+            for (var i=slideIndex;i<numSlides-1;i++) {
+                txt += "&bull;";
+            }
+            jQuery("#portfolio-page").html(txt);
             
-            jQuery("#portfolio-slider").children().first().animate({
-                marginTop: -515*(currentSlide)
+            jQuery("#portfolio-slider").animate({
+                marginLeft: -505*(currentSlide)
             });
-            
         };
         updateNav(0);
         
@@ -44,28 +55,49 @@
             updateNav(currentSlide);
             return false;
         });
-        
-        jQuery("#portfolio-slider").css('overflow','hidden');
     });
 </script>
 <style type="text/css">
+    #portfolio-nav {
+        display:none;
+        
+        width:510px;
+        height:3em;
+        position:relative;
+    }
     #portfolio-prev {
-        float:left;
+        position:absolute;
+        left:0;
+        z-index:100;
+    }
+    #portfolio-page {
+        position:absolute;
+        width:510px;
+        text-align:center;
     }
     #portfolio-next {
-        float:right;
+        position:absolute;
+        right:0;
+        z-index:100;
+    }
+    
+    #portfolio-box {
+        margin:0;
+        padding:0;
     }
     #portfolio-slider {
         width:510px;
+        /*
         height:505px;
         overflow:auto;
+        */
         position:relative;
         margin:0;
         padding:0;
     }
     .portfolio-item {
+        position:relative;
         width:505px;
-        height:500px;
         overflow:hidden;
         margin:0 0 15px 0;
         padding:0;
@@ -89,7 +121,36 @@
         padding-left: 2em;
     }
     .portfolio-item h2 {
+        position: absolute;
+        width: 502px;
+        color: #fff;
+        background: #333;
+        opacity: .85;
+        top:0;
         font-size: 20pt;
+        border-radius: 10px 10px 0 0;
+        -webkit-border-radius: 10px 10px 0 0;
+        -moz-border-radius: 10px 10px 0 0;
+    }
+    p.portfolio-img, p.portfolio-img img{
+        text-align:left;
+        border-radius: 10px 10px 0 0;
+        -webkit-border-radius: 10px 10px 0 0;
+        -moz-border-radius: 10px 10px 0 0;
+        margin:0;
+        padding:0;
+        vertical-align: bottom;
+    }
+    .portfolio-item .description {
+        width: 492px;
+        top:0;
+        padding:0 5px;
+        margin:0;
+        border-radius:0 0 10px 10px;
+        -webkit-border-radius:0 0 10px 10px;
+        -moz-border-radius:0 0 10px 10px;
+        background: #444;
+        color: #ddd;
     }
 </style>
 
@@ -100,14 +161,19 @@
         <p>This is an overview of some of the projects I&rsquo;ve worked on. For a more general overview of what I do, <a href="/about/">check out my bio</a>.</p>
         <hr />
         
+        <div id="portfolio-nav">
         <div id="portfolio-prev"><a href="#">&laquo;&nbsp;Previous Project</a></div>
+        <div id="portfolio-page">&bull;</div>
         <div id="portfolio-next"><a href="#">Next Project&nbsp;&raquo;</a></div>
         <br class="clear" style="margin-bottom:1em"/>
-
+        </div>
+        
+        <div id="portfolio-box">
         <div id="portfolio-slider">
             <div class="portfolio-item" id="komunews">
+                <p class="portfolio-img"><a href="http://www.komu.com/"><img src="http://media1.mike.tig.as/files/20100129/komu.jpg" alt="KOMU News iPhone App"/></a></p>
+
                 <h2>KOMU News for iPhone</h2>
-                <p><a href="http://www.komu.com/"><img src="http://media1.mike.tig.as/files/20100129/komu.jpg" alt="KOMU News iPhone App" width="500"/></a></p>
                 <div class="description">
                     <ul>
                         <li>Winter 2009: Objective-C development, PHP middleware development</li>
@@ -115,8 +181,9 @@
                 </div>
             </div>
             <div class="portfolio-item" id="mmpr">
+                <p class="portfolio-img"><a href="http://www.bandai.com/powerrangers/mmpr/"><img src="http://media3.mike.tig.as/style/201001/images/mmpr-500.png" alt="Mighty Morphin Power Rangers"/></a></p>
+
                 <h2>Mighty Morphin Power Rangers</h2>
-                <p><a href="http://www.bandai.com/powerrangers/mmpr/"><img src="http://media3.mike.tig.as/style/201001/images/mmpr-500.png" alt="Mighty Morphin Power Rangers" width="500"/></a></p>
                 <div class="description">
                     <ul>
                         <li>Winter 2009: PHP backend development<ul><li>custom CMS admin panel, storefront management system</li></ul></li>
@@ -124,22 +191,28 @@
                 </div>
             </div>
             <div class="portfolio-item" id="mw2">
+                <p class="portfolio-img"><a href="http://modernwarfare2.infinityward.com/"><img src="http://media1.mike.tig.as/files/20100802/mw2-1000.png" alt="Modern Warfare 2"/></a></p>
+
                 <h2>Call of Duty: Modern Warfare 2</h2>
-                <p><a href="http://modernwarfare2.infinityward.com/"><img src="http://media1.mike.tig.as/files/20100802/mw2-1000.png" alt="Modern Warfare 2" width="500"/></a></p>
-                <ul>
-                    <li>Fall 2009: PHP backend development<ul><li>CMS customizations, internationalization backend, social network API integration</li></ul></li>
-                </ul>
+                <div class="description">
+                    <ul>
+                        <li>Fall 2009: PHP backend development<ul><li>CMS customizations, internationalization backend, social network API integration</li></ul></li>
+                    </ul>
+                </div>
             </div>
             <div class="portfolio-item" id="spokesman">
+                <p class="portfolio-img"><a href="http://www.spokesman.com/"><img src="http://media1.mike.tig.as/files/20100802/spokesman-1000b.png" alt="The Spokesman-Review"/></a></p> 
+
                 <h2>Spokesman.com</h2>
-                <p><a href="http://www.spokesman.com/"><img src="http://media1.mike.tig.as/files/20100802/spokesman-1000b.png" alt="The Spokesman-Review" width="500"/></a></p> 
-                <ul>
-                    <li>2008-Present: Django/Python backend development<ul><li>data modeling, custom full-text search backend, <a href="http://www.opencalais.com/">Reuters OpenCalais</a> integration, GIS (geolocation, mapping) development, dynamic (jQuery/AJAX) user interface development</li></ul></li>
-                </ul>
+                <div class="description">
+                    <ul>
+                        <li>2008-Present: Django/Python backend development<ul><li>data modeling, custom full-text search backend, <a href="http://www.opencalais.com/">Reuters OpenCalais</a> integration, GIS (geolocation, mapping) development, dynamic (jQuery/AJAX) user interface development</li></ul></li>
+                    </ul>
+                </div>
             </div>
             <div class="portfolio-item" id="maneater">
                 <h2>The Maneater Student Newspaper</h2>
-                <p><a href="http://www.themaneater.com/"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper" width="500"/></a></p> 
+                <p><a href="http://www.themaneater.com/"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper"/></a></p> 
                 <ul>
                     <li>2006-2007: Online Editor / 2007-2008: Asst. Online Editor
                         <ul><li>Managed content updates, including breaking news. Maintained PHP-powered Web site from 2006-2007. Developed and deployed <a href="/2008/02/10/themaneatercom-launch/">new Django-powered Web site</a> in early 2008. Implemented, produced, and managed initial multimedia offerings including podcasts.</li></ul>
@@ -148,7 +221,7 @@
             </div>
             <div class="portfolio-item" id="nna">
                 <h2>The National Newspaper Association</h2>
-                <p><a href="http://www.nna.org/"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association" width="500"/></a></p> 
+                <p><a href="http://www.nna.org/"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association"/></a></p> 
                 <ul>
                     <li>2007: PHP frontend/backend development
                         <ul><li>Designed and integrated a complete Web site overhaul from aged, proprietary CMS into a Wordpress-powered backend.</li></ul>
@@ -156,6 +229,7 @@
                 </ul>
             </div>
         </div><!-- portfolio-slider -->
+        </div><!-- portfolio-box -->
         
 </div><!-- flatpage -->
 {% endblock %}
