@@ -16,8 +16,18 @@
 
         jQuery("#portfolio-nav").css('display','block');
         jQuery("#portfolio-box").css('width','505px').css('height','410px').css('overflow','hidden');
+
+
         jQuery("#portfolio-slider").css('width',''+numSlides*510+'px');
-        jQuery(".portfolio-item").css('float','left');
+        jQuery(".portfolio-item").css('float','left').hover(function() {
+            jQuery(this).children("h2, .description").animate({
+                opacity:0.0
+            }, 500);
+        }, function() {
+            jQuery(this).children("h2, .description").animate({
+                opacity:0.85
+            }, 500);
+        });
         /*
         jQuery("#portfolio-prev a").click(function() {return false;});
         jQuery("#portfolio-next a").click(function() {return false;});
@@ -31,11 +41,12 @@
             
             var txt = "";
             for (var i=0;i<slideIndex;i++) {
-                txt += "&bull;";
+                txt += "&#9675;";
             }
-            txt += '<span style="font-size:1.5em">&bull;</span>';
+            
+            txt += '<span style="color:#000">&#9679;</span>';
             for (var i=slideIndex;i<numSlides-1;i++) {
-                txt += "&bull;";
+                txt += "&#9675;";
             }
             jQuery("#portfolio-page").html(txt);
             
@@ -74,6 +85,7 @@
         position:absolute;
         width:510px;
         text-align:center;
+        color:#999  ;
     }
     #portfolio-next {
         position:absolute;
@@ -124,7 +136,7 @@
         position: absolute;
         width: 502px;
         color: #fff;
-        background: #333;
+        background: #111;
         opacity: .85;
         top:0;
         font-size: 20pt;
@@ -133,24 +145,27 @@
         -moz-border-radius: 10px 10px 0 0;
     }
     p.portfolio-img, p.portfolio-img img{
+        width:500px;
         text-align:left;
-        border-radius: 10px 10px 0 0;
-        -webkit-border-radius: 10px 10px 0 0;
-        -moz-border-radius: 10px 10px 0 0;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
         margin:0;
         padding:0;
         vertical-align: bottom;
     }
     .portfolio-item .description {
+        position:absolute;
         width: 492px;
-        top:0;
+        bottom:0;
         padding:0 5px;
         margin:0;
         border-radius:0 0 10px 10px;
         -webkit-border-radius:0 0 10px 10px;
         -moz-border-radius:0 0 10px 10px;
-        background: #444;
-        color: #ddd;
+        background: #111;
+        opacity: .85;
+        color: #eee;
     }
 </style>
 
@@ -160,6 +175,7 @@
 <div class="flatpage" id="flatpage-portfolio">
         <p>This is an overview of some of the projects I&rsquo;ve worked on. For a more general overview of what I do, <a href="/about/">check out my bio</a>.</p>
         <hr />
+        <h3>Major Projects</h3>
         
         <div id="portfolio-nav">
         <div id="portfolio-prev"><a href="#">&laquo;&nbsp;Previous Project</a></div>
@@ -206,30 +222,44 @@
                 <h2>Spokesman.com</h2>
                 <div class="description">
                     <ul>
-                        <li>2008-Present: Django/Python backend development<ul><li>data modeling, custom full-text search backend, <a href="http://www.opencalais.com/">Reuters OpenCalais</a> integration, GIS (geolocation, mapping) development, dynamic (jQuery/AJAX) user interface development</li></ul></li>
+                        <li>2008-Present: Django/Python backend development<ul><li>data modeling, custom full-text search backend, Reuters OpenCalais integration, GIS (geolocation, mapping) development, dynamic (jQuery/AJAX) user interface development</li></ul></li>
                     </ul>
                 </div>
             </div>
             <div class="portfolio-item" id="maneater">
+                <p class="portfolio-img"><a href="http://www.themaneater.com/"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper"/></a></p> 
+                
                 <h2>The Maneater Student Newspaper</h2>
-                <p><a href="http://www.themaneater.com/"><img src="http://media1.mike.tig.as/files/20090214/maneater.png" alt="The Maneater Student Newspaper"/></a></p> 
-                <ul>
-                    <li>2006-2007: Online Editor / 2007-2008: Asst. Online Editor
-                        <ul><li>Managed content updates, including breaking news. Maintained PHP-powered Web site from 2006-2007. Developed and deployed <a href="/2008/02/10/themaneatercom-launch/">new Django-powered Web site</a> in early 2008. Implemented, produced, and managed initial multimedia offerings including podcasts.</li></ul>
-                    </li>
-                </ul>
+                <div class="description">
+                    <ul>
+                        <li>2006-2007: Online Editor / 2007-2008: Asst. Online Editor
+                            <ul><li>Managed content updates, including breaking news. Maintained PHP-powered Web site from 2006-2007. Developed and deployed new Django-powered Web site in early 2008. Implemented, produced, and managed initial multimedia offerings including podcasts.</li></ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="portfolio-item" id="nna">
+                <p class="portfolio-img"><a href="http://www.nna.org/"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association"/></a></p> 
+                
                 <h2>The National Newspaper Association</h2>
-                <p><a href="http://www.nna.org/"><img src="http://media1.mike.tig.as/files/20090214/nna2.png" alt="The National Newspaper Association"/></a></p> 
-                <ul>
-                    <li>2007: PHP frontend/backend development
-                        <ul><li>Designed and integrated a complete Web site overhaul from aged, proprietary CMS into a Wordpress-powered backend.</li></ul>
-                    </li>
-                </ul>
+                <div class="description">
+                    <ul>
+                        <li>2007: PHP frontend/backend development
+                            <ul><li>Designed and integrated a complete Web site overhaul from aged, proprietary CMS into a Wordpress-powered backend.</li></ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div><!-- portfolio-slider -->
         </div><!-- portfolio-box -->
-        
+
+        <hr />
+        <h3>Miscellaneous</h3>
+        <ul>
+            <li><a href="http://nationbrowse.com/">NationBrowse</a>, a university capstone project to dynamically map census data (<a href="/blog/2010/02/22/nationbrowse/">write-up</a>, <a href="http://github.com/mtigas/cs4970_capstone">source code</a>)</li>
+            <li><a href="http://github.com/mtigas/django-gheat">django-gheat</a>, a heatmap-making toolkit for Django projects (<a href="http://gheat.miketigas.com/">demo</a>)</li>
+            <li><a href="http://code.google.com/p/geopy/">geopy</a>, a Python client for Web-based geocoding APIs</li>
+            <li>And various other snippets and projects <a href="http://github.com/mtigas">on GitHub</a></li>
+        </ul>
 </div><!-- flatpage -->
 {% endblock %}
