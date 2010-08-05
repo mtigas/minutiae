@@ -13,4 +13,6 @@
 <allow-access-from domain="media.miketigas.com.s3.amazonaws.com" secure="false"/>
 <allow-access-from domain="nationbrowse.s3.amazonaws.com" secure="false"/>
 <allow-access-from domain="173.45.228.60" secure="false"/>
+<allow-access-from domain="d2p12wh0p3fo1n.cloudfront.net" secure="false"/>
+<allow-access-from domain="mtigas1.appspot.com" secure="false"/>
 </cross-domain-policy>

@@ -15,8 +15,6 @@ DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 MEDIA_URL = 'https://mtigas1.appspot.com/'
 ADMIN_MEDIA_PREFIX = 'https://mtigas1.appspot.com/admin_media/'
-#MEDIA_URL = 'http://media3.mike.tig.as/'
-#ADMIN_MEDIA_PREFIX = 'http://media3.mike.tig.as/admin_media/'
 
 MIDDLEWARE_CLASSES = (
     'cacheutil.middleware.NginxMemcacheMiddleWare',
