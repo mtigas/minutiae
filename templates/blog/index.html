@@ -13,5 +13,8 @@
 
 {% block endbody %}
 {{ block.super }}
-<script type="text/javascript" src="http://dnn506yrbagrg.cloudfront.net/pages/scripts/0000/5628.js"> </script>
+<script type="text/javascript">
+var serverProto = (("https:" == document.location.protocol) ? "https" : "http");
+document.write(unescape("%3Cscript src='" + serverProto + "://dnn506yrbagrg.cloudfront.net/pages/scripts/0000/5628.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
 {% endblock %}
