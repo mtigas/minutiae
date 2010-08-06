@@ -29,8 +29,13 @@ class SuperuserSSLRedirect:
         if request.is_secure() or ('HTTP_X_FORWARDED_PROTOCOL' in request.META):
             return True
         
-        #Handle the Webfaction case until this gets resolved in the request.is_secure()
-        if 'HTTP_X_FORWARDED_SSL' in request.META:
-            return request.META['HTTP_X_FORWARDED_SSL'] == 'on'
-
+        if ('HTTP_X_FORWARDED_SSL' in request.META) and (request.META['HTTP_X_FORWARDED_SSL'] == 'on'):
+            return True
+        
+        if ('wsgi.scheme' in request.META) and (request.META['wsgi.scheme'] == 'https'):
+            return True
+        
+        if ('SERVER_PORT' in request.META) and (request.META['SERVER_PORT'] == '443'):
+            return True
+        
         return False
