@@ -3,6 +3,8 @@
 {% get_comment_list for post as comment_list %}
 {% get_comment_form for post as comment_form %}
 
+{% if not post.enable_comments and comment_count == 0 %}{% else %}
+
 <div id="comments">
 <h2>{% if post.enable_comments %}
     {% ifnotequal comment_count 0 %}{{ comment_count|apnumber|capfirst }}{% else %}No{% endifnotequal %} Comment{{comment_count|pluralize}}
@@ -66,3 +68,4 @@
 {% endif %}
 </div>
 
+{% endif %}
