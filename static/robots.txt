@@ -3,4 +3,4 @@ Disallow: /files/
 Disallow: /static/
 Disallow: /style/
 Disallow: /__mtadmin_/
-Sitemap: http://mike.tig.as/sitemap.xml
+Sitemap: https://mike.tig.as/sitemap.xml

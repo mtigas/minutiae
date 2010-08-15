@@ -66,7 +66,7 @@ class BlogPost(models.Model):
     def absolute_uri(self):
         current_site = Site.objects.get_current()
         
-        return "http://"+current_site.domain+reverse(
+        return "https://"+current_site.domain+reverse(
             'blog:post',
             kwargs = {
                 'year' : self.pubdate.year,
@@ -87,7 +87,7 @@ class BlogCommentModerator(CommentModerator):
             return False
         
         if blog_url is None:
-            blog_url = 'http://%s/' % Site.objects.get_current().domain
+            blog_url = 'https://%s/' % Site.objects.get_current().domain
         
         ak = Akismet(
             key=settings.AKISMET_API_KEY,

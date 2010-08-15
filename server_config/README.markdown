@@ -1,18 +1,28 @@
 # Server configurations #
 
 My server is deployed using [nginx][nginx] as the forward-facing server
-that proxies connections to [Apache/mod_wsgi][apachewsgi], as necessary.
+that proxies connections to [uWSGI][uwsgi], which handles the actual
+Python/Django application instance.
 
 [nginx]: http://wiki.nginx.org/
-[apachewsgi]: http://docs.djangoproject.com/en/dev/howto/deployment/modwsgi/
+[uwsgi]: http://projects.unbit.it/uwsgi/
 
 The files in this directory are _examples_ of server configuration files
 and may differ *significantly* from my actual operating server configuration.
 
 I've tried my best to comment out ambiguous sections of the configuration
-for the benefit of those learning how to deploy Django+Apache/mod_wsgi behind nginx
-(along with [nginx serving directly out of the django cache][nginxcache]).
+for the benefit of those learning how to deploy uWSGI behind nginx.
 
-[nginxcache]: http://weichhold.com/2008/09/12/django-nginx-memcached-the-dynamic-trio/
+[Questions and comments are welcome.](https://mike.tig.as/contact/)
 
-[Questions and comments are welcome.](http://mike.tig.as/contact/)
+## Notes ##
+
+The uWSGI instance is started as a daemon via an [upstart][upstart] script.
+Those using other or older Linux distributions (which use the System-V init.d system),
+will need to write their own init scripts to start this background server.
+
+[upstart]: http://upstart.ubuntu.com/
+
+You may have issues with socket permissions between nginx and uWSGI if the
+socket directory doesn't allow read/write access to the nginx and uWSGI
+daemon users (normally www-data).

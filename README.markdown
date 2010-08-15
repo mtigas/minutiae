@@ -1,7 +1,7 @@
 # Minutiae
 
 For a current description of the site and the little development
-details that went into it, please check out [my site colophon](http://mike.tig.as/colophon/)
+details that went into it, please check out [my site colophon](https://mike.tig.as/colophon/)
 for the time being.
 
 ## License
@@ -13,4 +13,4 @@ Please see [LICENSE.txt][license] for full information.
 
 ## Questions or comments?
 
-[I'd love to hear from you.](http://mike.tig.as/contact/)
+[I'd love to hear from you.](https://mike.tig.as/contact/)

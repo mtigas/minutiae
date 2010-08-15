@@ -1,4 +1,4 @@
-See http://mike.tig.as/colophon/#license regarding text/photo/media
+See https://mike.tig.as/colophon/#license regarding text/photo/media
 content that's actually displayed on my site.
 
 For just about everything this source code repository, the

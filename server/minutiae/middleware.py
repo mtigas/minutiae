@@ -5,8 +5,6 @@ from django.contrib.sites.models import Site
 class SuperuserSSLRedirect:
     """
     Forces all superuser logins to go to the server via HTTPS.
-    
-    (See server_config/nginx.conf for an example server setup for nginx+apache_modwsgi.)
     """
     
     def process_request(self, request):

@@ -4,7 +4,7 @@
 {% block meta_description %}{% if post.description %}{{ post.description }}{% else %}{{ post.body|striptags|truncatewords:35 }}{% endif %}{% endblock %}
 
 {% block headextra %}
-{%comment%}<link rel="shorturl" href="http://mike.tig.as/b/{{ post.pk }}"/>{%endcomment%}
+{%comment%}<link rel="shorturl" href="https://mike.tig.as/b/{{ post.pk }}"/>{%endcomment%}
 {% endblock %}
 
 {% block title %}{% if post.title %}{{ post.title }}{% else %}Untitled{% endif %} - {{ block.super}}{% endblock %}

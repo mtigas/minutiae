@@ -44,7 +44,7 @@
         <h3>Hosting</h3>
         <ul>
         <li>This site is hosted on a 256 slice at <a href="http://www.slicehost.com/">Slicehost</a>, in my good ol&rsquo; hometown of St. Louis, Missouri. They rock.</li>
-        <li>My server runs <a href="http://www.ubuntu.com/">Ubuntu 9.10</a> using <a href="http://wiki.nginx.org/">nginx</a> in front of Apache, which serves <a href="http://docs.djangoproject.com/en/dev/howto/deployment/modwsgi/">Django via mod_wsgi</a>. Data lives in <a href="http://www.postgresql.org/">PostgreSQL</a>. <a href="http://www.danga.com/memcached/">Memcached</a> is used here and there to speed things up a bit &mdash; <a href="http://weichhold.com/2008/09/12/django-nginx-memcached-the-dynamic-trio/">nginx even directly serves pages from the Django cache</a>, for <a href="http://codysoyland.com/2010/jan/17/evaluating-django-caching-options/">awesome performance</a>.
+        <li>My server runs <a href="http://www.ubuntu.com/">Ubuntu 10.04</a> using <a href="http://wiki.nginx.org/">nginx</a> in front of <a href="http://projects.unbit.it/uwsgi/">uWSGI</a>. Data lives in <a href="http://www.postgresql.org/">PostgreSQL</a>. <a href="http://www.danga.com/memcached/">Memcached</a> is used here and there to speed things up a bit.
             <ul><li><a href="http://github.com/mtigas/minutiae/tree/master/server_config/">Some example configuration files</a> are stored within the repository</a>, if you&rdquo;re interested in how I did this</li></ul>
         </li>
         <li>I generally upload multimedia files to <a href="http://aws.amazon.com/s3/">Amazon S3</a>/<a href="http://aws.amazon.com/cloudfront/">CloudFront</a>.</li>
