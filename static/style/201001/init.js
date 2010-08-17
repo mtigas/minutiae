@@ -1,28 +1,28 @@
 var MinutiaeTools = window.MinutiaeTools || {};
 MinutiaeTools.page_refresh = function() {
-    jQuery("a img").parent("a").css("border","none");
+    $("a img").parent("a").css("border","none");
 };
 MinutiaeTools.supports_input_placeholder = function() {
     var i = document.createElement('input');
     return 'placeholder' in i;
 };
 
-jQuery(function() {
+$(function() {
     MinutiaeTools.page_refresh();
     
-    if (jQuery(".sitesearch input[name=q]").is() && (MinutiaeTools.supports_input_placeholder !== true)) {
-        jQuery(".sitesearch input[name=q]").focus(function(){ 
-            if(jQuery(this).val() == jQuery(this).attr('placeholder')) {
-                jQuery(this).css('color',"#222");
-                jQuery(this).val('');
+    if ($(".sitesearch input[name=q]").is() && (MinutiaeTools.supports_input_placeholder !== true)) {
+        $(".sitesearch input[name=q]").focus(function(){ 
+            if($(this).val() == $(this).attr('placeholder')) {
+                $(this).css('color',"#222");
+                $(this).val('');
             }
         }).blur(function(){ 
-            if(jQuery(this).val() == '') {
-                jQuery(this).css('color',"#888");
-                jQuery(this).val(jQuery(this).attr('placeholder'));
+            if($(this).val() == '') {
+                $(this).css('color',"#888");
+                $(this).val($(this).attr('placeholder'));
             }
         });
-        jQuery(".sitesearch input[name=q]").val(jQuery(".sitesearch input[name=q]").attr('placeholder')).css('color',"#888");
+        $(".sitesearch input[name=q]").val($(".sitesearch input[name=q]").attr('placeholder')).css('color',"#888");
     }
 });
 
