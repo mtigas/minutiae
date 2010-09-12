@@ -13,7 +13,7 @@ ssh -C 173.45.236.2 "
 cd mt2
 git reset --hard HEAD
 git gc --aggressive
-#./update_dependencies.sh
+./update_dependencies.sh
 
 touch wsgi.py
 sudo stop uwsgi_miketigas
