@@ -5,7 +5,15 @@ TEMPLATE_DEBUG = DEBUG
 
 SEND_BROKEN_LINK_EMAILS = True
 
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/?timeout=43200&max_entries=100000&cull_frequency=5'
+#CACHE_BACKEND = 'memcached://127.0.0.1:11211/?timeout=43200&max_entries=100000&cull_frequency=5'
+CACHE_BACKEND = 'django_pylibmc.memcached://127.0.0.1:11211/?timeout=43200&max_entries=100000&cull_frequency=5&binary=1'
+PYLIBMC_BEHAVIORS = {
+    'tcp_nodelay' : True,
+    'no_block' : True,
+    'connect_timeout': 150,
+    #'ketama': True
+}
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_COOKIE_AGE = 43200
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
