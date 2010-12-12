@@ -18,7 +18,6 @@ git gc --aggressive
 touch wsgi.py
 sudo stop uwsgi_miketigas
 sudo service nginx restart
-sudo service memcached restart
 sudo start uwsgi_miketigas
 find . -name \"*.pyc\" -delete
 find . -name \"*.pyo\" -delete

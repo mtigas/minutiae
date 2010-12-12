@@ -26,3 +26,12 @@ curl -o smartypants.py http://web.chad.org/projects/smartypants.py/smartypants.p
 # ===== akismet.py =====
 cd $DEPS_DIR
 curl -O http://www.voidspace.org.uk/downloads/akismet.py
+
+# ===== akismet.py =====
+cd $DEPS_DIR
+curl -O http://www.voidspace.org.uk/downloads/akismet.py
+
+# ===== django-newcache =====
+svn co https://svn.github.com/mtigas/django-newcache.git
+mv django-newcache.git/newcache.py .
+rm -fr django-newcache.git
