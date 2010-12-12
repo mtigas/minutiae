@@ -11,7 +11,7 @@ PYLIBMC_BEHAVIORS = {
     'no_block' : True,
     'connect_timeout': 150,
 }
-CACHE_VERSION = 2
+CACHE_VERSION = 3
 FLAVOR = "miketigas.com"
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
