@@ -30,6 +30,3 @@ curl -O http://www.voidspace.org.uk/downloads/akismet.py
 # ===== akismet.py =====
 cd $DEPS_DIR
 curl -O http://www.voidspace.org.uk/downloads/akismet.py
-
-# ===== django-newcache =====
-curl -O https://github.com/mtigas/django-newcache/raw/django1.3/newcache.py
