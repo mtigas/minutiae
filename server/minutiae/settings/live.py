@@ -5,7 +5,9 @@ TEMPLATE_DEBUG = DEBUG
 
 SEND_BROKEN_LINK_EMAILS = True
 
-CACHE_BACKEND = 'newcache://127.0.0.1:11211/?timeout=43200&max_entries=100000&cull_frequency=5&binary=1'
+#CACHE_BACKEND = 'newcache://127.0.0.1:11211/?timeout=43200&max_entries=100000&cull_frequency=5&binary=1'
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/?timeout=43200&max_entries=100000&cull_frequency=5&binary=1'
+
 PYLIBMC_BEHAVIORS = {
     'tcp_nodelay' : True,
     'no_block' : True,
