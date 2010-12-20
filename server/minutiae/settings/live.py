@@ -16,7 +16,7 @@ PYLIBMC_BEHAVIORS = {
 CACHE_VERSION = 3
 FLAVOR = "miketigas.com"
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 SESSION_COOKIE_AGE = 43200
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 

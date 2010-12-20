@@ -24,7 +24,7 @@ SECRET_KEY = 'change me in server-specific secret_settings.py'
 CACHE_BACKEND = 'dummy:///'
 CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_KEY_PREFIX = "2miketigas_middleware"
-CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+#CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 NGINX_CACHE_PREFIX = "NGINX_mt2"
 
 TIME_ZONE = 'America/Chicago'
