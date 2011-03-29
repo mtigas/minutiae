@@ -7,7 +7,7 @@ mkdir -p $DEPS_DIR
 
 # ===== Django SVN =====
 cd $DEPS_DIR
-svn co http://code.djangoproject.com/svn/django/trunk/django django
+svn co http://code.djangoproject.com/svn/django/tags/releases/1.3/django django
 
 # ===== Typogrify SVN =====
 cd $DEPS_DIR
@@ -22,10 +22,6 @@ rm -fr django-contact-form
 # ===== Smartypants =====
 cd $DEPS_DIR
 curl -o smartypants.py http://web.chad.org/projects/smartypants.py/smartypants.py-1.5_1.6
-
-# ===== akismet.py =====
-cd $DEPS_DIR
-curl -O http://www.voidspace.org.uk/downloads/akismet.py
 
 # ===== akismet.py =====
 cd $DEPS_DIR
