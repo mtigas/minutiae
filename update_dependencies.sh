@@ -26,3 +26,6 @@ curl -o smartypants.py http://web.chad.org/projects/smartypants.py/smartypants.p
 # ===== akismet.py =====
 cd $DEPS_DIR
 curl -O http://www.voidspace.org.uk/downloads/akismet.py
+
+cd $DEPS_DIR
+curl -O https://github.com/ericflo/django-newcache/raw/master/newcache.py
