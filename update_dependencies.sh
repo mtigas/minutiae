@@ -28,4 +28,4 @@ cd $DEPS_DIR
 curl -O http://www.voidspace.org.uk/downloads/akismet.py
 
 cd $DEPS_DIR
-curl -O https://github.com/ericflo/django-newcache/raw/master/newcache.py
+curl -O https://raw.github.com/ericflo/django-newcache/master/newcache.py
